@@ -117,7 +117,7 @@
         <servlet-name>policy</servlet-name>
         <url-pattern>/policyedit</url-pattern>
     </servlet-mapping>
-	
+
 	<servlet>
         <servlet-name>sendMail</servlet-name>
         <jsp-file>/WEB-INF/jsp/sendMail.jsp</jsp-file>
