@@ -39,7 +39,7 @@ public class ContactSupportListCommand extends AbstractCommand{
             MySqlConnectionManager.getInstance().closeConnection();
 
             resc.setResult(results);
-            resc.setTarget("cotactlistresult");
+            resc.setTarget("contact");
 
             return resc;
         }catch(IntegrationException e){
