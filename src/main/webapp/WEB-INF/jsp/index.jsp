@@ -9,7 +9,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>テスト画面</title>
+    <title>Login</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -84,7 +84,7 @@
 <body>
     <div class="login">
     	<h1>Login</h1>
-    	<form method="post" class="form-group" action="front/managerPage">
+    	<form method="post" class="form-group" action="front/login">
     		<input type="text" name="loginId" placeholder="ユーザー名" required="required" />
             <input type="password" name="password" placeholder="パスワード" required="required" />
     		<button type="submit" class="btn btn-primary btn-large" style="width:100%">ログイン</button>
