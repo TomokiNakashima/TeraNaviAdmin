@@ -82,6 +82,7 @@
     </style>
 </head>
 <body>
+    <div class="text-center text-waring" style="font-size:300%">TeraNavi管理者</div>
     <div class="login">
     	<h1>Login</h1>
     	<form method="post" class="form-group" action="front/login">

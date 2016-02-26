@@ -30,7 +30,7 @@ pageEncoding="UTF-8"
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">管理者</a>
+                <a class="navbar-brand" href="#">管理者</a>
             </div>
             <div style="color: white;
 
@@ -59,7 +59,7 @@ pageEncoding="UTF-8"
                         <a href="#"><i class="fa fa-tasks fa-3x"></i> 利用変更<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="/TeraNaviAdmin/policyAdmin.jsp">利用規約</a>
+                                <a href="/TeraNaviAdmin/policyedit">利用規約</a>
                             </li>
                             <li>
                                 <a href="/TeraNaviAdmin/authorrity.jsp">権限</a>
@@ -67,7 +67,7 @@ pageEncoding="UTF-8"
                         </ul>
                     </li>
                     <li>
-                        <a href="/TeraNaviAdmin/signUpKey.jsp"><i class="fa fa-key fa-3x"></i> 登録キー</a>
+                        <a href="/TeraNaviAdmin/KeyCreate"><i class="fa fa-key fa-3x"></i> 登録キー</a>
                     </li>
                     <li>
                         <a href="/TeraNaviAdmin/contact" class="active-menu"><i class="fa fa-envelope fa-3x"></i> お問い合わせ</a>
@@ -92,15 +92,14 @@ pageEncoding="UTF-8"
                     <th>詳細</th>
                 </tr>
                 <c:forEach var="contact" items="${result}">
-                    <tr id="${contact.id}">
+                    <tr id="contactId_${contact.id}">
                         <td>${contact.id}</td>
-                        <td id="name">${contact.userName}</td>
+                        <td>${contact.userName}</td>
                         <td>${contact.category}</td>
                         <td>${contact.title}</td>
                         <td>${contact.date}</td>
-                        <%-- <td class="col-md-1 pull-right"><a href="#mail-modal" data-toggle="modal">
-                            <button type="button">詳細へ</button></a>
-                        </td> --%>
+                        <td hidden>${contact.contactBody}</td>
+                        <td hidden>${contact.address}</td>
                         <td class="col-md-1 pull-right">
                             <button type="button" class="btn btn-primary" onclick="read(${contact.id})">詳細へ</button>
                         </td>
@@ -108,7 +107,6 @@ pageEncoding="UTF-8"
                 </c:forEach>
             </tbody>
         </table>
-        <a href="#contact-modal" data-toggle="modal">1156</a>
 
         <div id="contact-modal" class="modal fade" aria-hidden="true" style="display: none;">
             <div class="modal-dialog">
@@ -118,7 +116,7 @@ pageEncoding="UTF-8"
                         <h1 class="text-center">返信</h1>
                     </div>
                     <div id="contactM" class="modal-body">
-                        <form action="/TeraNavi/front/#" method="post">
+                        <form action="/TeraNavi/front/" method="post">
                             <div class="form-group">
                                 <label class="control-label" for="exampleInputName">お名前</label>
                                 <input class="form-control" id="contactReplayName" name="name" type="text">
@@ -133,9 +131,9 @@ pageEncoding="UTF-8"
                             </div>
                             <div class="form-group">
                                 <label class="control-label">本文</label>
-                                <textarea class="form-control" id="contactReplayBody" name="body"></textarea>
+                                <textarea class="form-control" id="contactReplayBody" name="body" rows="6"></textarea>
                             </div>
-                            <button type="button" id="contactBtn" class="btn btn-default pull-right">送信する</button>
+                            <button type="submit" id="contactBtn" class="btn btn-default pull-right">送信する</button>
                         </form>
 
                     </div>
@@ -155,30 +153,26 @@ pageEncoding="UTF-8"
 
                         <div class="form-group">
                             <label class="control-label" for="exampleInputName">お名前</label>
-                            <input class="form-control" id="contactName" name="name" type="text" readonly="ture">
+                            <input class="form-control" id="contactName" name="name" type="text" readonly>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="exampleInputTitle">件名</label>
-                            <input class="form-control" id="contactTitle" name="title" type="text" readonly="ture">
+                            <input class="form-control" id="contactTitle" name="title" type="text" readonly>
                         </div>
                         <div class="form-group">
                             <label class="control-label">メールアドレス</label>
-                            <input class="form-control" id="contactAddress" type="email" name="address" readonly="ture">
+                            <input class="form-control" id="contactAddress" type="email" name="address" readonly>
                         </div>
                         <div class="form-group">
                             <label class="control-label">カテゴリ</label>
-                            <input class="form-control" id="contactCategory" name="category" readonly="ture">
+                            <input class="form-control" id="contactCategory" name="category" readonly>
                         </div>
                         <div class="form-group">
                             <label class="control-label">本文</label>
-                            <textarea class="form-control" id="contactBody" name="body" readonly="ture"></textarea>
+                            <textarea class="form-control" id="contactBody" name="body" readonly rows="6"></textarea>
                         </div>
-                        <a href="#contact-modal" data-toggle="modal" data-dismiss="modal">
-                            <button type="button" id="contactBtn" class="btn btn-default pull-right">返信する</button>
-                        </a>
-
-
-                    </div>
+                            <button type="button" id="contactBtn" class="btn btn-default pull-right" onclick="formWrite(false)">返信する</button>
+                                </div>
                     <div class="modal-footer"></div>
                 </div><!--end moal-content-->
             </div><!--end modal-dialog-->
@@ -199,8 +193,6 @@ pageEncoding="UTF-8"
     <script src="/TeraNaviAdmin/js/assets/js/morris/morris.js"></script>
     <!-- CUSTOM SCRIPTS -->
     <script src="/TeraNaviAdmin/js/assets/js/custom.js"></script>
-    <script>
-        $("#contactName").attr("value",$("#name").text());
-    </script>
+    <script src="/TeraNaviAdmin/js/contact-modal.js"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : signkeyResult
     Created on : 2016/02/01, 15:18:34
     Author     : Masaki
@@ -16,7 +16,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>記事一覧表示</title>
+    <title>signkeyResult.jsp</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -36,17 +36,17 @@
             <table class="table table-striped">
                <thead>
                    <tr>
-                      
+
                        <th>登録キー</th>
-                       
+
                    </tr>
                </thead>
                <tbody>
-                  
+
                     <c:forEach var="key" items="${result}">
                        <tr>
                            <td><c:out value="${key}"/></td>
-                           
+
                            <!-- <td class="deletable"> <a href="/TeraNavi/deletArticle">編集</a> </td> -->
                        </tr>
                     </c:forEach>
