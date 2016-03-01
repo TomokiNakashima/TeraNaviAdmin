@@ -19,6 +19,7 @@ import ttc.dao.AbstractDao;
 
 import ttc.util.UniqueKeyGenerator;
 
+
 public class KeyCreateCommand extends AbstractCommand{
 
 
@@ -26,22 +27,23 @@ public class KeyCreateCommand extends AbstractCommand{
         try{
             RequestContext reqc = getRequestContext();
 
-			int count = Integer.parseInt(reqc.getParameter("count")[0]);
-            
+            int count = Integer.parseInt(reqc.getParameter("count")[0]);
+
+
             List hashs = new ArrayList();
             List keys = new ArrayList();
-            
+
             for(int i = 0;i < count;i++){
                 String key = UniqueKeyGenerator.generateKeys();
                 String hash = UniqueKeyGenerator.getHashCode(key);
                 keys.add(key);
                 hashs.add(hash);
             }
-            
+
             MySqlConnectionManager.getInstance().beginTransaction();
             AbstractDaoFactory factory = AbstractDaoFactory.getFactory("keyCreate");
             AbstractDao dao = factory.getAbstractDao();
-            
+
             int rCount = 0;
             Iterator itr = hashs.iterator();
             while(itr.hasNext()){
@@ -60,11 +62,12 @@ public class KeyCreateCommand extends AbstractCommand{
                 Map errResult = new HashMap();
                 errResult.put("count",count-rCount);
                 errResult.put("keys",keys);
-                
+
                 resc.setResult(errResult);
                 resc.setTarget("errSignKeyResult");
             }
-            
+
+
 
             return resc;
         }catch(IntegrationException e){
