@@ -27,7 +27,7 @@
        <div class="row">
            <h1>管理人権限の付与</h1>
            <form action="front/adminau" method="post">
-               <input type="text" name="targetId"><br>
+               <input type="text" name="target"><br>
            </form>
        </div><!--end row-->
     </div><!--end container-->

@@ -1,18 +1,18 @@
-var ajaxSettings;
-var ajax;
+// var ajaxSettings;
+// var ajax;
+//
+// var nowId;
 
-var nowId;
-
-function loadVersion(){
+function loadPolicyVersion(){
     ajaxSettings = {
-            type:'post',
-            url:'/TeraNavi/front/TermsDisplay',
-            dataType:'json',
-            data:null
-        };
+        type:'post',
+        url:'/TeraNavi/front/TermsDisplay',
+        dataType:'json',
+        data:null
+    };
 
-        loadPolicy();
-        $("#modal").modal("show");
+    loadPolicy();
+    $("#modal").modal("show");
 }
 
 function loadPolicy(){
@@ -24,20 +24,13 @@ function loadPolicy(){
 
     ajaxSettings.success = function(data){
 
-        var body = $("#textBody");
+        var textBody = $("#textBody");
         var list = $("#list ul");
 
-        body.empty();
+        textBody.empty();
         list.empty();
 
-console.log(data.main.date)
-        // body.append("<p>"+data.main.date+"</p>");
-        $("#date").innerText=data.main.date;
-        console.log($("#date"))
-        // body.append("<p>"+data.body.body+"</p>");
-        body.innerHTML=data.main.body;
-
-        // list.append("<h1>過去のバージョン</h1>");
+        textBody.innerHTML=data.main.body;
         for(var i = 0;i < data.list.length;i++){
             var date = data.list[i].date.slice(0,10);
             list.append("<ol><a onclick='loadPolicyId(\""+data.list[i].id+"\")'>"+date+"</a></ol>");
@@ -64,18 +57,14 @@ function loadPolicyId(id){
 
     ajaxSettings.success = function(data){
 
-        var body = $("#textBody");
+        var textBody = document.getElementById("textBody");
         var list = $("#list ul");
 
-        body.empty();
+        //textBody.empty();
         list.empty();
 
 
-        $("#date").innerText=data.main.date;
-        // body.append("<p>"+data.body.body+"</p>");
-        body.innerHTML=data.main.body;
-
-        // list.append("<h1>リスト</h1>");
+        textBody.innerHTML=data.main.body;
         for(var i = 0;i < data.list.length;i++){
 
             var date = data.list[i].date.slice(0,10);
@@ -88,4 +77,35 @@ function loadPolicyId(id){
     }
 
     ajax = $.ajax(ajaxSettings);
+}
+
+/*
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
+
+function sendPolicy(){
+	if(window.confirm('送信してもよろしいですか？')){
+		ajaxSettings = {
+			type:'post',
+			url:'/TeraNaviAdmin/front/policyedit',
+			dataType:'json',
+			data:null
+
+		};
+		ajaxSettings.data = {
+			ajax:"true",
+			policy:CKEDITOR.instances.editorpolicy.getData()
+		};
+
+		ajaxSettings.success = function(data){
+			alert("保存完了しました");
+		}
+
+		ajax = $.ajax(ajaxSettings);
+	}
+	else{
+		window.alert('キャンセルされました');
+	}
 }

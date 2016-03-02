@@ -8,7 +8,7 @@ import ttc.dao.RulesDao;
 
 import ttc.exception.integration.IntegrationException;
 
-public class RuleDaoFactory extends AbstractDaoFactory{
+public class RulesDaoFactory extends AbstractDaoFactory{
     public AbstractDao getAbstractDao(){
         return new RulesDao();
     }
