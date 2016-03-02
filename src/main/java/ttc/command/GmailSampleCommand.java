@@ -7,7 +7,7 @@ import ttc.bean.UserBean;
 import ttc.context.RequestContext;
 import ttc.context.ResponseContext;
 import ttc.dao.AbstractDao;
-import ttc.exception.BusinessLogicException;
+import ttc.exception.business.BusinessLogicException;
 import ttc.util.MySqlConnectionManager;
 import ttc.util.factory.AbstractDaoFactory;
 import ttc.util.mailer.GmailApiSample;

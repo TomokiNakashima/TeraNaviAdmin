@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import ttc.bean.CommunityBean;
 import ttc.bean.Bean;
 
-import ttc.exception.IntegrationException;
+import ttc.exception.integration.IntegrationException;
 
 import ttc.util.MySqlConnectionManager;
 

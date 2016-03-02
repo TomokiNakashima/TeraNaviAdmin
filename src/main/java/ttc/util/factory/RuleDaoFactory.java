@@ -4,12 +4,12 @@ import java.util.Properties;
 import java.io.IOException;
 
 import ttc.dao.AbstractDao;
-import ttc.dao.RuleDao;
+import ttc.dao.RulesDao;
 
-import ttc.exception.IntegrationException;
+import ttc.exception.integration.IntegrationException;
 
 public class RuleDaoFactory extends AbstractDaoFactory{
     public AbstractDao getAbstractDao(){
-        return new RuleDao();
+        return new RulesDao();
     }
 }

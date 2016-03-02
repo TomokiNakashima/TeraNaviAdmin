@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import ttc.bean.CautionBean;
 import ttc.bean.Bean;
 import ttc.bean.UserBean;
-import ttc.exception.IntegrationException;
+import ttc.exception.integration.IntegrationException;
 import ttc.util.MySqlConnectionManager;
 
 import ttc.exception.NotLineException;
