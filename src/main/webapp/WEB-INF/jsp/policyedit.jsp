@@ -98,7 +98,9 @@
                    <div class="tab-content">
                        <div class="tab-pane active" id="policy">
                            <div class="col-md-4 pull-right col-md-offset-2" style="margin-right:-60px;margin-bottom:10px;">
-                               <a href="#"><button type="button" class="btn btn-primary">過去のバージョンを確認</button></a>
+                               <!-- <a href="#modal" data-toggle="modal"> -->
+                                   <button type="button" class="btn btn-primary" onclick="loadVersion()">過去のバージョンを確認</button>
+                               <!-- </a> -->
                            </div>
                            <form action="/TeraNaviAdmin/front/policyedit" method="post" class="form-horizontalx">
                                <div class="form-group col-sm-8 col-md-offset-2" id="policy_area">
@@ -106,7 +108,7 @@
                                    <script src="ckeditor/ckeditor.js"></script>
                                </div>
                                <div class="form-group col-md-4 col-md-offset-2">
-                                   <button type="submit" class="btn btn-primary">改訂版を確認</button>
+                                       <button type="submit" class="btn btn-primary">改訂版を確認</button>
                                </div>
                            </form>
                        </div>
@@ -114,15 +116,44 @@
                            <div class="col-md-4 pull-right col-md-offset-2" style="margin-right:-60px;margin-bottom:10px;">
                                <a href="#"><button type="button" class="btn btn-primary">過去のバージョンを確認</button></a>
                            </div>
-                           <form action="#" method="post" class="form-horizontalx">
+                           <form action="/TeraNaviAdmin/front/ruleedit" method="post" class="form-horizontalx">
                                <div class="form-group col-sm-8 col-md-offset-2" id="term_area">
-                                   <textarea class="ckeditor" cols="80" id="editor1" name="editor1" rows="40">利用規約</textarea>
+                                   <textarea class="ckeditor" cols="80" id="editor1" name="rule" rows="40"></textarea>
                                    <script src="ckeditor/ckeditor.js"></script>
                                </div>
                                <div class="form-group col-md-4 col-md-offset-2">
                                    <button type="submit" class="btn btn-primary">改訂版を確認</button>
                                </div>
                            </form>
+                       </div>
+                   </div>
+
+
+                   <div id="modal" class="modal fade" aria-hidden="true" style="display: none">
+                       <div class="modal-dialog">
+                           <div class="modal-content" style="background-color:#ffffff;width:160%">
+                               <div class="modal-header">
+                                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                   <h1 class="text-center">過去のバージョン</h1>
+                               </div>
+                               <label class="pull-right text-muted" id="date" style="margin-right:40px;"></label>
+                               <div id="contactM" class="modal-body">
+                                   <div class="section">
+                                       <div class="container">
+                                           <div class="row">
+                                               <div class="col-md-6" style="height:70%;width:20%;border: 1px solid #6B717B;">
+                                                   <div id="list" style="">
+                                       				<ul>
+                                       				</ul>
+                                       		   </div>
+                                               </div>
+                                               <div class="col-md-6 col-md-offset-1" id="textBody" style="height:70%;width:50%;border: 1px solid #6B717B;">
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
                        </div>
                    </div>
                    <!-- /. PAGE WRAPPER -->
@@ -140,5 +171,6 @@
                <script src="/TeraNaviAdmin/js/assets/js/morris/morris.js"></script>
                <!-- CUSTOM SCRIPTS -->
                <script src="/TeraNaviAdmin/js/assets/js/custom.js"></script>
+               <script src="/TeraNaviAdmin/js/load-policy.js"></script>
 
            </body></html>

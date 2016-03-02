@@ -1,56 +1,52 @@
 package ttc.bean;
 
 public class RulesBean implements Bean{
-    private String ruleId;
-    private String ruleDate;
-    private String ruleBody;
+    private String id;
+    private String date;
+    private String body;
+
+	/**
+	 * @return the id
+	 */
+	public String getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return the date
+	 */
+	public String getDate() {
+		return date;
+	}
+
+	/**
+	 * @param date the date to set
+	 */
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	/**
+	 * @return the body
+	 */
+	public String getBody() {
+		return body;
+	}
+
+	/**
+	 * @param body the body to set
+	 */
+	public void setBody(String body) {
+		this.body = body;
+	}
 
     
-	/**
-	* Returns value of ruleId
-	* @return
-	*/
-	public String getRuleId() {
-		return ruleId;
-	}
-
-	/**
-	* Sets new value of ruleId
-	* @param
-	*/
-	public void setRuleId(String ruleId) {
-		this.ruleId = ruleId;
-	}
-
-	/**
-	* Returns value of ruleDate
-	* @return
-	*/
-	public String getRuleDate() {
-		return ruleDate;
-	}
-
-	/**
-	* Sets new value of ruleDate
-	* @param
-	*/
-	public void setRuleDate(String ruleDate) {
-		this.ruleDate = ruleDate;
-	}
-
-	/**
-	* Returns value of ruleBody
-	* @return
-	*/
-	public String getRuleBody() {
-		return ruleBody;
-	}
-
-	/**
-	* Sets new value of ruleBody
-	* @param
-	*/
-	public void setRuleBody(String ruleBody) {
-		this.ruleBody = ruleBody;
-	}
+	
 }

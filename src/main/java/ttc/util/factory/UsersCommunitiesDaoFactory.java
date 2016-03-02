@@ -6,7 +6,7 @@ import java.io.IOException;
 import ttc.dao.AbstractDao;
 import ttc.dao.UsersCommunitiesDao;
 
-import ttc.exception.IntegrationException;
+import ttc.exception.integration.IntegrationException;
 
 public class UsersCommunitiesDaoFactory extends AbstractDaoFactory{
     public AbstractDao getAbstractDao(){
