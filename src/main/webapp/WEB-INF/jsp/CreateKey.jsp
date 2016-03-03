@@ -99,23 +99,16 @@ pageEncoding="UTF-8"
             <div class="tab-pane active" id="publish">
                 <form action="/TeraNaviAdmin/front/keyCreate" method="post" class="form-inline col-md-offset-5" style="padding:50px;">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="count">
+                        <input type="text" class="form-control" name="count" id="write_count">
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary" name="発行">発行</button>
                     </div>
                 </form>
                 <div class="table">
-                    <table class="table table-striped">
+                    <table class="table table-striped" id="write_table">
                         <caption><h3>発行された登録キー一覧</h3></caption>
                         <tr><th>番号</th><th>キー</th><th>status</th></tr>
-                        <c:forEach var="signKey" items="${result}" varStatus="status">
-                            <tr>
-                                <%-- <td>${status.index}</td>
-                                <td>${signKey.signUpKey}</td>
-                                <td>${signKey.keyStatus}</td> --%>
-                            </tr>
-                        </c:forEach>
                     </table>
                 </div>
 
@@ -124,23 +117,16 @@ pageEncoding="UTF-8"
             <div class="tab-pane" id="create">
                 <form action="#" method="post" class="form-inline col-md-offset-5" style="padding:50px;">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="number">
+                        <input type="text" class="form-control" name="number" id="create_count">
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary" name="生成">生成</button>
                     </div>
                 </form>
                 <div class="table">
-                    <table class="table table-striped">
+                    <table class="table table-striped" id="create_table">
                         <caption><h3>生成された登録キー一覧</h3></caption>
                         <tr><th>番号</th><th>キー</th><th>status</th></tr>
-                        <tr><td>0</td><td>da16wd1a9w8d1a9</td><td>0</td></tr>
-                        <tr><td>1</td><td>da16wd1a9w8d1a9</td><td>0</td></tr>
-                        <tr><td>2</td><td>da16wd1a9w8d1a9</td><td>1</td></tr>
-                        <tr><td>3</td><td>da16wd1a9w8d1a9</td><td>0</td></tr>
-                        <tr><td>4</td><td>da16wd1a9w8d1a9</td><td>1</td></tr>
-                        <tr><td>5</td><td>da16wd1a9w8d1a9</td><td>0</td></tr>
-                        <tr><td>6</td><td>da16wd1a9w8d1a9</td><td>0</td></tr>
                     </table>
                 </div>
 
