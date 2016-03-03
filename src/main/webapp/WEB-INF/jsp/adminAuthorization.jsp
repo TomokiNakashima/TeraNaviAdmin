@@ -83,24 +83,15 @@
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="ユーザー名" id="inputUserName">
                 <span class="input-group-btn">
-                    <button class="btn btn-default fa fa-search" type="button" style="height:140%" onclick="search()"></button>
+                    <button class="btn btn-default fa fa-search" type="button" style="height:140%" onclick="search()" id="search_button"></button>
                 </span>
             </div><!-- /input-group -->
         </div><!-- /.col-lg-6 -->
 
         <!-- print area -->
-        <div class="col-md-8" style="padding:50px">
+        <div class="col-md-8" style="padding:50px;margin-left:15%">
             <div class="row" id="printArea">
-                <div class="col-md-3">
-                    <div class="thumbnail">
-                        <span><button class="glyphicon glyphicon-plus pull-right" style="color:#F37518"></button></span>
-                        <img src="http://i2.hdslb.com/group1/M00/D4/5A/oYYBAFagcd6AajI0AAC0slBPW9E721.gif" alt="Icon" class="img-rounded" style="height:50px;width50px;">
-                        <div class="caption">
-                            <span>名前：XXXX</span>
-                            <p style="font-size:90%">アドレス:XXXXXXXX@XXXXXX</p>
-                        </div>
-                    </div>
-                </div>
+                <img src="http://static.hdslb.com/mstation/images/video/notfound.png" style="margin-left=32%;">
             </div>
         </div>
         <!-- /print area -->
