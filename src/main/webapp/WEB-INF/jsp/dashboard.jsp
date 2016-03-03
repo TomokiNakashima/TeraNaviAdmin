@@ -38,7 +38,7 @@
                     <div style="color: white;
                         padding: 15px 50px 5px 50px;
                         float: right;
-                        font-size: 16px;">Last access : ${sessionScope.loginUser.adminLastLoginDate} &nbsp;
+                        font-size: 16px;">Last access : <span id="lastTime">${sessionScope.loginUser.adminLastLoginDate}</span> &nbsp;
                         <a href="/TeraNavi/front/logout" class="btn btn-danger square-btn-adjust">ログアウト</a>
                     </div>
                 </nav>
@@ -53,7 +53,7 @@
                                     <a href="/TeraNaviAdmin/dashboard" class="active-menu"><i class="fa fa-dashboard fa-3x"></i> ダッシュボード</a>
                                 </li>
                                 <li>
-                                    <a href="/TeraNaviAdmin/userManager.jsp"><i class="fa fa-user fa-3x"></i> ユーザー管理</a>
+                                    <a href="/TeraNaviAdmin/userManagement"><i class="fa fa-user fa-3x"></i> ユーザー管理</a>
                                 </li>
                                 <li>
                                     <a href="#"><i class="fa fa-tasks fa-3x"></i> 利用変更<span class="fa arrow"></span></a>
@@ -91,7 +91,7 @@
                                             <i class="fa fa-envelope-o"></i>
                                         </span>
                                         <div class="text-box" >
-                                            <p class="main-text">XXX 件</p>
+                                            <p class="main-text" id="new_contact">0 件</p>
                                             <p class="text-muted">新着問い合わせ</p>
                                         </div>
                                     </div>
@@ -102,7 +102,7 @@
                                             <i class="fa fa-bars"></i>
                                         </span>
                                         <div class="text-box" >
-                                            <p class="main-text">X 通</p>
+                                            <p class="main-text" id="new_report">0 通</p>
                                             <p class="text-muted">新着通報数</p>
                                         </div>
                                     </div>
@@ -237,7 +237,7 @@
             <script src="/TeraNaviAdmin/js/assets/js/morris/morris.js"></script>
             <!-- CUSTOM SCRIPTS -->
             <script src="/TeraNaviAdmin/js/assets/js/custom.js"></script>
-
+            <script src="/TeraNaviAdmin/js/new-contact.js"></script>
 
         </body>
     </html>

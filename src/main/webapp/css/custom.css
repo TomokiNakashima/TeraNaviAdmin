@@ -1,0 +1,58 @@
+/*ロック中ユーザcss*/
+        .showUserArea_name{
+            font-size: 200%;
+        }
+        .showUserArea_lastTime{
+            font-size:300%;
+            width:6em;
+        }
+        .showUserArea_button_release{
+            margin-top: -75%;
+        }
+        #showUserArea{
+            width: 90%;
+            height: 80%;
+            margin-left: 5%;
+            margin-top: 60px;
+        }
+        .showUserArea_caption{
+            margin-left: 10%;
+        }
+        #showUserArea .list-group{
+            margin-top: 30px;
+        }
+
+        /*共有css*/
+        .list-group img{
+            height:100px;
+            width:100px;
+        }
+
+        /*通報css*/
+        .lock-select{
+            width: 10%;
+            margin-left: 17%;
+            margin-top: -34px;
+            position: absolute;
+        }
+
+        .caution-button{
+            margin-left: 18%;
+            margin-top: 4%;
+        }
+
+        .operate-area{
+            margin-left: 40%;
+        }
+
+        .Forcedーwithdrawal{
+            margin-top: -42%;
+        }
+
+        .list{
+            margin-top: 30px;
+        }
+        .list label{
+            font-size: 200%;
+            margin-top:2%;
+        }

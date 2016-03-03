@@ -52,7 +52,7 @@
                                <a href="/TeraNaviAdmin/dashboard"><i class="fa fa-dashboard fa-3x"></i> ダッシュボード</a>
                            </li>
                            <li>
-                               <a href="/TeraNaviAdmin/userManager.jsp"><i class="fa fa-user fa-3x"></i> ユーザー管理</a>
+                               <a href="/TeraNaviAdmin/userManagement"><i class="fa fa-user fa-3x"></i> ユーザー管理</a>
                            </li>
                            <li>
                                <a href="#"><i class="fa fa-tasks fa-3x"></i> 利用変更<span class="fa arrow"></span></a>
