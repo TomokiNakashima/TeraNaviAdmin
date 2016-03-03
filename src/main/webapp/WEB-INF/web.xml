@@ -58,12 +58,12 @@
         <jsp-file>/WEB-INF/jsp/adminAuthorization.jsp</jsp-file>
     </servlet>
     <servlet>
-        <servlet-name>login</servlet-name>
-        <jsp-file>/WEB-INF/jsp/login.jsp</jsp-file>
+        <servlet-name>manage</servlet-name>
+        <jsp-file>/WEB-INF/jsp/managerPage.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
-        <servlet-name>login</servlet-name>
-        <url-pattern>/adminlogin</url-pattern>
+        <servlet-name>manage</servlet-name>
+        <url-pattern>/manager</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>adminAuthorization</servlet-name>
@@ -117,7 +117,7 @@
         <servlet-name>policy</servlet-name>
         <url-pattern>/policyedit</url-pattern>
     </servlet-mapping>
-	
+
 	<servlet>
         <servlet-name>sendMail</servlet-name>
         <jsp-file>/WEB-INF/jsp/sendMail.jsp</jsp-file>
@@ -154,5 +154,22 @@
         <url-pattern>/showCaution</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>notice</servlet-name>
+        <jsp-file>/WEB-INF/jsp/notice.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>notice</servlet-name>
+        <url-pattern>/notice</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>dashboart</servlet-name>
+        <jsp-file>/WEB-INF/jsp/dashboart.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>dashboart</servlet-name>
+        <url-pattern>/dashboart</url-pattern>
+    </servlet-mapping>
 
 </web-app>

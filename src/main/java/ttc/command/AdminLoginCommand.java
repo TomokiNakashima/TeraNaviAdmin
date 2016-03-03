@@ -5,8 +5,8 @@ import ttc.context.ResponseContext;
 
 import ttc.util.MySqlConnectionManager;
 
-import ttc.exception.IntegrationException;
-import ttc.exception.BusinessLogicException;
+import ttc.exception.integration.IntegrationException;
+import ttc.exception.business.BusinessLogicException;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -49,7 +49,7 @@ public class AdminLoginCommand extends AbstractCommand {
                     ub.setPassword("dummy");
                     ub.setSecretAnswer("dummy");
                     resc.setResult(ub);
-                    resc.setTarget("adminLoginResult");
+                    resc.setTarget("dashboard");
 
                     return resc;
                 }else{

@@ -5,8 +5,8 @@ import ttc.context.ResponseContext;
 
 import ttc.util.MySqlConnectionManager;
 
-import ttc.exception.IntegrationException;
-import ttc.exception.BusinessLogicException;
+import ttc.exception.integration.IntegrationException;
+import ttc.exception.business.BusinessLogicException;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -39,7 +39,7 @@ public class ContactSupportListCommand extends AbstractCommand{
             MySqlConnectionManager.getInstance().closeConnection();
 
             resc.setResult(results);
-            resc.setTarget("cotactlistresult");
+            resc.setTarget("contact");
 
             return resc;
         }catch(IntegrationException e){

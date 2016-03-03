@@ -5,8 +5,8 @@ import ttc.context.ResponseContext;
 
 import ttc.util.MySqlConnectionManager;
 
-import ttc.exception.IntegrationException;
-import ttc.exception.BusinessLogicException;
+import ttc.exception.integration.IntegrationException;
+import ttc.exception.business.BusinessLogicException;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -40,9 +40,9 @@ public class AdminAuthorizationCommand extends AbstractCommand{
                 Map params = new HashMap();
                 params.put("value",targets[i]);
                 params.put("where","where user_id=?");
-                
+
                 UserBean ub = (UserBean)dao.read(params);
-                
+
 				params.put("userId",targets[i]);
                 params.put("adminFlag","1");
                 params.put("userbean",ub);
@@ -57,7 +57,7 @@ public class AdminAuthorizationCommand extends AbstractCommand{
             Map result = new HashMap();
 			result.put("list", users);
 			result.put("want", "管理者権限に");
-			
+
 			resc.setResult(result);
             resc.setTarget("AccountChangeResult");
 

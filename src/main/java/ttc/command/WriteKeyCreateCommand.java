@@ -5,8 +5,8 @@ import ttc.context.ResponseContext;
 
 import ttc.util.MySqlConnectionManager;
 
-import ttc.exception.IntegrationException;
-import ttc.exception.BusinessLogicException;
+import ttc.exception.integration.IntegrationException;
+import ttc.exception.business.BusinessLogicException;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -29,22 +29,22 @@ public class WriteKeyCreateCommand extends AbstractCommand{
             RequestContext reqc = getRequestContext();
 
             int count = Integer.parseInt(reqc.getParameter("count")[0]);
-            
+
 
             List hashs = new ArrayList();
             List keys = new ArrayList();
-            
+
             for(int i = 0;i < count;i++){
                 String key = UniqueKeyGenerator.generateKeys();
                 String hash = UniqueKeyGenerator.getHashCode(key);
                 keys.add(key);
                 hashs.add(hash);
             }
-            
+
             MySqlConnectionManager.getInstance().beginTransaction();
             AbstractDaoFactory factory = AbstractDaoFactory.getFactory("keyCreate");
             AbstractDao dao = factory.getAbstractDao();
-            
+
             int rCount = 0;
             Iterator itr = hashs.iterator();
             while(itr.hasNext()){
@@ -55,25 +55,30 @@ public class WriteKeyCreateCommand extends AbstractCommand{
 
             MySqlConnectionManager.getInstance().commit();
             MySqlConnectionManager.getInstance().closeConnection();
-	    
+
 	    String fileName = UniqueKeyGenerator.generateKeys();
-	    
+
 	    CSVGateway gateway = new CSVGateway();
 	    boolean flag = gateway.write(keys, fileName);
 
             if(flag){
-                resc.setResult(fileName);
+                Map errResult = new HashMap();
+                errResult.put("count",count-rCount);
+                errResult.put("keys",keys);
+                errResult.put("fileName",fileName);
+
+                resc.setResult(errResult);
                 resc.setTarget("writeSignkeyResult");
             }else{
                 Map errResult = new HashMap();
                 errResult.put("count",count-rCount);
                 errResult.put("keys",keys);
-                
+
                 resc.setResult(errResult);
                 resc.setTarget("errSignKeyResult");
             }
-            
-            
+
+
 
             return resc;
         }catch(IntegrationException e){

@@ -5,8 +5,8 @@ import ttc.context.ResponseContext;
 
 import ttc.util.MySqlConnectionManager;
 
-import ttc.exception.BusinessLogicException;
-import ttc.exception.IntegrationException;
+import ttc.exception.business.BusinessLogicException;
+import ttc.exception.integration.IntegrationException;
 
 import java.util.Map;
 import java.util.HashMap;
