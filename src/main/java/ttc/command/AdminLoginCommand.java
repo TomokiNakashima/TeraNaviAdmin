@@ -49,7 +49,7 @@ public class AdminLoginCommand extends AbstractCommand {
                     ub.setPassword("dummy");
                     ub.setSecretAnswer("dummy");
                     resc.setResult(ub);
-                    resc.setTarget("adminLoginResult");
+                    resc.setTarget("dashboard");
 
                     return resc;
                 }else{

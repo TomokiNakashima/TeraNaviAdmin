@@ -62,7 +62,12 @@ public class WriteKeyCreateCommand extends AbstractCommand{
 	    boolean flag = gateway.write(keys, fileName);
 
             if(flag){
-                resc.setResult(fileName);
+                Map errResult = new HashMap();
+                errResult.put("count",count-rCount);
+                errResult.put("keys",keys);
+                errResult.put("fileName",fileName);
+
+                resc.setResult(errResult);
                 resc.setTarget("writeSignkeyResult");
             }else{
                 Map errResult = new HashMap();
