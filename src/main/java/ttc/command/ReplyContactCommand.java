@@ -6,8 +6,8 @@ package ttc.command;
 import ttc.context.RequestContext;
 import ttc.context.ResponseContext;
 
-import ttc.exception.IntegrationException;
-import ttc.exception.BusinessLogicException;
+import ttc.exception.integration.IntegrationException;
+import ttc.exception.business.BusinessLogicException;
 
 import ttc.util.Mailler;
 import ttc.util.GMailler;
