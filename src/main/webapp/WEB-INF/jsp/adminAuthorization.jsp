@@ -91,7 +91,7 @@
         <!-- print area -->
         <div class="col-md-8" style="padding:50px;margin-left:15%">
             <div class="row" id="printArea">
-                <img src="http://static.hdslb.com/mstation/images/video/notfound.png" style="margin-left=32%;">
+                <img src="http://pic.58pic.com/58pic/11/44/45/35Y58PICeC9.jpg" style="margin-left=32%;">
             </div>
         </div>
         <!-- /print area -->
