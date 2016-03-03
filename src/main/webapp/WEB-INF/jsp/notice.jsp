@@ -47,34 +47,34 @@
               <ul class="nav" id="main-menu">
                   <li class="text-center">
                       <img src="${sessionScope.loginUser.iconPath}" class="user-image img-responsive">
-                  </li>
-                  <li>
-                      <a href="/TeraNaviAdmin/adminLoginResult.jsp"><i class="fa fa-dashboard fa-3x"></i> ダッシュボード</a>
-                  </li>
-                  <li>
-                      <a href="/TeraNaviAdmin/userManager.jsp"><i class="fa fa-user fa-3x"></i> ユーザー管理</a>
-                  </li>
-                  <li>
-                      <a href="#"><i class="fa fa-tasks fa-3x"></i> 利用変更<span class="fa arrow"></span></a>
-                      <ul class="nav nav-second-level">
-                          <li>
-                              <a href="/TeraNaviAdmin/policyAdmin.jsp">利用規約</a>
-                          </li>
-                          <li>
-                              <a href="/TeraNaviAdmin/authorrity.jsp">権限</a>
-                          </li>
-                      </ul>
-                  </li>
-                  <li>
-                      <a href="/TeraNaviAdmin/signUpKey.jsp"><i class="fa fa-key fa-3x"></i> 登録キー</a>
-                  </li>
-                  <li>
-                      <a href="/TeraNaviAdmin/front/contsupplist"><i class="fa fa-envelope fa-3x"></i> お問い合わせ</a>
-                  </li>
-                  <li>
-                      <a href="/TeraNaviAdmin/notice" class="active-menu"><i class="fa fa-edit fa-3x"></i> お知らせ </a>
-                  </li>
-              </ul>
+                      </li>
+                      <li>
+                          <a href="/TeraNaviAdmin/dashboard"><i class="fa fa-dashboard fa-3x"></i> ダッシュボード</a>
+                      </li>
+                      <li>
+                          <a href="/TeraNaviAdmin/userManager.jsp"><i class="fa fa-user fa-3x"></i> ユーザー管理</a>
+                      </li>
+                      <li>
+                          <a href="#"><i class="fa fa-tasks fa-3x"></i> 利用変更<span class="fa arrow"></span></a>
+                          <ul class="nav nav-second-level">
+                              <li>
+                                  <a href="/TeraNaviAdmin/policyedit">利用規約</a>
+                              </li>
+                              <li>
+                                  <a href="/TeraNaviAdmin/adminau">権限</a>
+                              </li>
+                          </ul>
+                      </li>
+                      <li>
+                          <a href="/TeraNaviAdmin/KeyCreate"><i class="fa fa-key fa-3x"></i> 登録キー</a>
+                      </li>
+                      <li>
+                          <a href="/TeraNaviAdmin/front/contsupplist"><i class="fa fa-envelope fa-3x"></i> お問い合わせ</a>
+                      </li>
+                      <li>
+                          <a href="/TeraNaviAdmin/notice" class="active-menu"><i class="fa fa-edit fa-3x"></i> お知らせ </a>
+                      </li>
+                  </ul>
           </div>
       </nav>
       <!-- /. NAV SIDE -->

@@ -37,7 +37,7 @@
 
             float: right;
 
-            font-size: 16px;">Last access : 30 May 2014 &nbsp;
+            font-size: 16px;">Last access : ${sessionScope.loginUser.adminLastLoginDate} &nbsp;
             <a href="#" class="btn btn-danger square-btn-adjust">ログアウト</a>
         </div>
     </nav>
@@ -46,35 +46,35 @@
         <div class="sidebar-collapse">
             <ul class="nav" id="main-menu">
                 <li class="text-center">
-                    <img src="https://d2k1ftgv7pobq7.cloudfront.net/meta/p/res/images/eeffef371f07cfe5396093f998424c6c/home-taco.png" class="user-image img-responsive">
-                </li>
-                <li>
-                    <a href="managePage.html"><i class="fa fa-dashboard fa-3x"></i> ダッシュボード</a>
-                </li>
-                <li>
-                    <a href="userManager.html"><i class="fa fa-user fa-3x"></i> ユーザー管理</a>
-                </li>
-                <li>
-                    <a href="#" class="active-menu"><i class="fa fa-tasks fa-3x"></i> 利用変更<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a href="policyAdmin.html">利用規約</a>
-                        </li>
-                        <li>
-                            <a href="authorrity.html">権限</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="signUpKey.html"><i class="fa fa-key fa-3x"></i> 登録キー</a>
-                </li>
-                <li>
-                    <a href="contact.html"><i class="fa fa-envelope fa-3x"></i> お問い合わせ</a>
-                </li>
-                <li>
-                    <a href="notice.html"><i class="fa fa-edit fa-3x"></i> お知らせ </a>
-                </li>
-            </ul>
+                    <img src="${sessionScope.loginUser.iconPath}" class="user-image img-responsive">
+                    </li>
+                    <li>
+                        <a href="/TeraNaviAdmin/dashboard"><i class="fa fa-dashboard fa-3x"></i> ダッシュボード</a>
+                    </li>
+                    <li>
+                        <a href="/TeraNaviAdmin/userManager.jsp"><i class="fa fa-user fa-3x"></i> ユーザー管理</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-tasks fa-3x"></i> 利用変更<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/TeraNaviAdmin/policyedit">利用規約</a>
+                            </li>
+                            <li>
+                                <a href="/TeraNaviAdmin/adminau" class="active-menu">権限</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/TeraNaviAdmin/KeyCreate"><i class="fa fa-key fa-3x"></i> 登録キー</a>
+                    </li>
+                    <li>
+                        <a href="/TeraNaviAdmin/front/contsupplist"><i class="fa fa-envelope fa-3x"></i> お問い合わせ</a>
+                    </li>
+                    <li>
+                        <a href="/TeraNaviAdmin/notice"><i class="fa fa-edit fa-3x"></i> お知らせ </a>
+                    </li>
+                </ul>
         </div>
     </nav>
     <!-- /. NAV SIDE -->
