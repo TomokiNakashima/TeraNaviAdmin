@@ -26,10 +26,11 @@ public class CautionCommand extends AbstractCommand{
             Map params = new HashMap();
             params.put("toUserId",toUserId);
             params.put("where","user_id = ?");
+            params.put("value",toUserId);
 
             MySqlConnectionManager.getInstance().beginTransaction();
 
-            AbstractDaoFactory factory = AbstractDaoFactory.getFactory("user");
+            AbstractDaoFactory factory = AbstractDaoFactory.getFactory("users");
             AbstractDao dao = factory.getAbstractDao();
             UserBean ub = (UserBean)dao.read(params);
             MySqlConnectionManager.getInstance().commit();
@@ -41,9 +42,9 @@ public class CautionCommand extends AbstractCommand{
             String mess = "違反行為が見られました。";
 
             AbstractMailer mailer = new GmailMailer();
-            mailer.setAddress("caution@teranavi.com");
-            mailer.setAccount("teranavi@testaccount");
-            mailer.setPass("testmailpass");
+            mailer.setAddress("teranavi.info@gmail.com");
+            mailer.setAccount("teranavi.info@gmail.com");
+            mailer.setPass("#TeraInfomation");
             String result = mailer.sendMail(toAddress, title, mess);
 
             resc.setResult(result);

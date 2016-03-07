@@ -1,6 +1,5 @@
 package ttc.command;
 
-import java.util.ArrayList;
 import ttc.context.RequestContext;
 import ttc.context.ResponseContext;
 
@@ -11,57 +10,40 @@ import ttc.exception.integration.IntegrationException;
 
 import ttc.util.factory.AbstractDaoFactory;
 import ttc.dao.AbstractDao;
-
 import java.util.Map;
 import java.util.HashMap;
+import ttc.bean.UserBean;
 import java.util.List;
 
-import ttc.bean.UserBean;
-
-public class AccountDeleteCommand extends AbstractCommand{
+public class LockingCommand extends AbstractCommand{
     public ResponseContext execute(ResponseContext resc)throws BusinessLogicException{
-        try{
+		try{
             RequestContext reqc = getRequestContext();
 
-            String[] targets = reqc.getParameter("target");
-            String[] status = reqc.getParameter("status");
+            String userStatus = reqc.getParameter("userStatus")[0];
+
+            Map params = new HashMap();
+            params.put("userStatus",userStatus);
+            params.put("where","where user_status_flag>0 and user_status_flag<?");
 
             MySqlConnectionManager.getInstance().beginTransaction();
 
             AbstractDaoFactory factory = AbstractDaoFactory.getFactory("users");
             AbstractDao dao = factory.getAbstractDao();
 
-			List users = new ArrayList();
-
-			for(int i = 0;i < targets.length;i++){
-                Map params = new HashMap();
-                params.put("value",targets[i]);
-                params.put("where","where user_id=?");
-
-                UserBean ub = (UserBean)dao.read(params);
-
-				params.put("userId",targets[i]);
-                params.put("userbean",ub);
-                params.put("userStatus",status[i]);
-
-				dao.update(params);
-
-				users.add(ub.getUserName());
-            }
-
             MySqlConnectionManager.getInstance().commit();
             MySqlConnectionManager.getInstance().closeConnection();
 
-			Map result = new HashMap();
-			result.put("list", users);
-			result.put("want", "削除");
-
-			resc.setResult(result);
-            resc.setTarget("AccountChangeResult");
+            List result = dao.readAll(params);
+            resc.setResult(result);
+            resc.setTarget("cautionResult");
 
             return resc;
+
         }catch(IntegrationException e){
             throw new BusinessLogicException(e.getMessage(),e);
+        }catch(Exception e){
+			throw new BusinessLogicException(e.getMessage(),e);
         }
     }
 }
