@@ -35,6 +35,7 @@ import ttc.exception.integration.IntegrationException;
 
 import java.util.Map;
 import java.util.HashMap;
+import ttc.util.PasswordSaffer;
 
 
 /**
@@ -108,8 +109,14 @@ public class UserAddServlet extends HttpServlet {
 			for(String[] user : users){
 				Map params = new HashMap();
 
-				params.put("loginId",user[0]);
-				params.put("password", user[1]);
+				String loginId = user[0];
+				params.put("loginId",loginId);
+				
+				String password = user[1];
+				
+				password = PasswordSaffer.getStretchedPassword(password, loginId);
+				
+				params.put("password", password);
 				params.put("userName",user[2]);
 				params.put("nameKana",user[3]);
 				params.put("sex",user[4]);
