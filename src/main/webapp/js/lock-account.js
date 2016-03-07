@@ -53,7 +53,7 @@ function deleteUser(id){
         };
 
         ajaxSettings.success = function(data){
-            document.getElementById("delete_account").outerHTML="<p>アカウントを削除しました</p>";
+            document.getElementById("delete_account"+id).outerHTML="<p>アカウントを削除しました</p>";
         }
         ajax = $.ajax(ajaxSettings);
     }

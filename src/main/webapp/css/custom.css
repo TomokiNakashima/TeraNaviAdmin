@@ -1,7 +1,5 @@
 .list{
-    padding-top: 33px;
-    height: 700px;
-    overflow-y: scroll;
+    width: 1250px;
 }
 
 .list-2{
@@ -63,8 +61,8 @@
     margin-top: -10%;
 }
 
-#showUserArea{
-    margin-top: 60px;
+#showUserArea,#showUserArea_report{
+    margin-top: 90px;
     margin-left: 120px;
     height: 700px;
     overflow-y: scroll;

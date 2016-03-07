@@ -106,7 +106,8 @@ pageEncoding="UTF-8"
     </div>
     <div class="tab-content">
         <div class="tab-pane active" id="report">
-            <div class="col-md-10" id="showUserArea">
+            <button class="btn btn-warning pull-right" onclick="reload()" id="refresh">更新</button>
+            <div class="col-md-10" id="showUserArea_report">
             </div>
         </div>
         <div class="tab-pane" id="insert">
@@ -196,14 +197,11 @@ pageEncoding="UTF-8"
         uploadAsync: true,
         maxFileCount: 1
     });
-    //
-    // $("#file-3").fileinput({
-    //     showUpload: false,
-    //     showCaption: false,
-    //     browseClass: "btn btn-primary btn-lg",
-    //     fileType: "any",
-    //     previewFileIcon: "<i class='glyphicon glyphicon-king'></i>"
-    // });
+
+    function reload(){
+    	loadUserList();
+        showCaution();
+    }
     </script>
 
 </body></html>
