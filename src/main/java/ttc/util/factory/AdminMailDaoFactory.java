@@ -4,12 +4,12 @@ import java.util.Properties;
 import java.io.IOException;
 
 import ttc.dao.AbstractDao;
-import ttc.dao.CommunitySearchDao;
+import ttc.dao.AdminMailDao;
 
 import ttc.exception.integration.IntegrationException;
 
-public class CommunitySearchDaoFactory extends AbstractDaoFactory{
+public class AdminMailDaoFactory extends AbstractDaoFactory{
     public AbstractDao getAbstractDao(){
-        return new  CommunitySearchDao();
+        return new AdminMailDao();
     }
 }
