@@ -79,6 +79,7 @@ pageEncoding="UTF-8"
 </nav>
 <!-- /. NAV SIDE -->
 <div id="page-wrapper">
+        <div id="page-inner">
     <h1 class="text-center text-warning" style="font-size:85px;">登録キー発行</h1>
     <form class="form-inline col-md-offset-5" style="padding:50px;">
         <div class="form-group">
@@ -100,6 +101,7 @@ pageEncoding="UTF-8"
         <input type="hidden" value="" id="file" name="fileName">
     </form>
     </div>
+</div>
     <!-- /. PAGE WRAPPER -->
 </div>
     <!-- /. WRAPPER -->

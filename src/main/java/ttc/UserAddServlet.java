@@ -6,6 +6,7 @@
 package ttc;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -156,7 +157,12 @@ public class UserAddServlet extends HttpServlet {
 			MySqlConnectionManager.getInstance().commit();
 			MySqlConnectionManager.getInstance().closeConnection();
 
-			request.setAttribute("result", users);
+
+			String responseJson = "{\"responseMessage\" : \"サーブレットからの返信です\"}";
+			response.setContentType("application/json;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.print(responseJson);
+			// request.setAttribute("result", users);
 
 		}catch(IntegrationException e){
 			throw new IOException(e.getMessage(),e);
@@ -165,8 +171,8 @@ public class UserAddServlet extends HttpServlet {
 		}
 
 
-		RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/jsp/csvAddResult.jsp");
-		dis.forward(request, response);
+		// RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/jsp/csvAddResult.jsp");
+		// dis.forward(request, response);
 
 	}
 

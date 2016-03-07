@@ -19,7 +19,7 @@ function showCaution(){
         ajaxSettings.success = function(data){
             outerData=data;
             var htmlData,buttonData;
-            var area=$("#report");
+            var area=$("#showUserArea_report");
 
             area.empty();
             for(var i=0;i<data.length;i++){

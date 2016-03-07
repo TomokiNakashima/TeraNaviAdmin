@@ -79,6 +79,7 @@
     </nav>
     <!-- /. NAV SIDE -->
     <div id="page-wrapper">
+            <div id="page-inner">
         <div class="col-md-3 col-md-offset-4" style="margin-top:20px;">
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="ユーザー名" id="inputUserName">
@@ -94,6 +95,7 @@
                 <img src="http://pic.58pic.com/58pic/11/44/45/35Y58PICeC9.jpg" style="margin-left=32%;">
             </div>
         </div>
+    </div>
         <!-- /print area -->
         <!-- /. PAGE WRAPPER -->
     </div>

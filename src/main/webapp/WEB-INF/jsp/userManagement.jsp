@@ -89,7 +89,7 @@ pageEncoding="UTF-8"
         <div class="container">
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
-                    <ul class="lead nav nav-justified nav-tabs">
+                    <ul class="lead nav nav-justified nav-tabs" style="position:absolute;z-index:1">
                         <li class="active">
                             <a href="#report" data-toggle="tab" class="text-warning" style="font-size: 130%;">通報</a>
                         </li>
@@ -106,19 +106,17 @@ pageEncoding="UTF-8"
     </div>
     <div class="tab-content">
         <div class="tab-pane active" id="report">
+            <button class="btn btn-warning pull-right" onclick="reload()" id="refresh">更新</button>
+            <div class="col-md-10" id="showUserArea_report">
+            </div>
         </div>
         <div class="tab-pane" id="insert">
             <div class="col-md-10">
-                <form>
+                <form id="csv_from">
                     <div class="form-group" style="margin-top:15%;margin-left:32%">
                         <label style="font-size:400%;font-family:HG行書体;" class="">CSVファイルアップロード</label><br/>
                         <div class="text-center">
                             <input id="file-3" type="file" accept=".csv">
-                            <%-- <a onclick="upLoad()">
-                                <button class="btn btn-warning btn-lg btn-file">
-                                    <i class="glyphicon glyphicon-upload"></i> &nbsp;送信 …
-                                </button>
-                            </a> --%>
                         </div>
                     </div>
                 </form>
@@ -199,14 +197,11 @@ pageEncoding="UTF-8"
         uploadAsync: true,
         maxFileCount: 1
     });
-    //
-    // $("#file-3").fileinput({
-    //     showUpload: false,
-    //     showCaption: false,
-    //     browseClass: "btn btn-primary btn-lg",
-    //     fileType: "any",
-    //     previewFileIcon: "<i class='glyphicon glyphicon-king'></i>"
-    // });
+
+    function reload(){
+    	loadUserList();
+        showCaution();
+    }
     </script>
 
 </body></html>

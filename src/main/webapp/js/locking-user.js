@@ -1,8 +1,5 @@
 
 	loadUserList();
-function reload(){
-	loadUserList();
-}
 
 
 function loadUserList(){

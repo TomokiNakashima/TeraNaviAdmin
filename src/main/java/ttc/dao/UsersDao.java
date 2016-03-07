@@ -249,7 +249,7 @@ public class UsersDao implements AbstractDao{
             rs.next();
 
             count = rs.getInt(1);
-
+            System.out.println("insert:"+count);
         }catch(SQLException e){
             MySqlConnectionManager.getInstance().rollback();
             throw new IntegrationException(e.getMessage(),e);

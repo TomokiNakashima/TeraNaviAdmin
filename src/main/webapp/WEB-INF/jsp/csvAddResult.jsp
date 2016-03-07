@@ -28,15 +28,15 @@
     <jsp:include page="/WEB-INF/jsp/header.jsp"/>
 
     <div class="container">
-	
+
 
 		<div class="row">
-			
+
 			<table class="table table-striped">
 				<thead>
 					<tr>
 						<th>ユーザ名</th>
-						
+
 					</tr>
 				</thead>
 				<tbody>
@@ -47,7 +47,7 @@
 					</c:forEach>
 				</tbody>
 			</table>
-	 
+
 		</div><!--end row-->
     </div><!--end container-->
     <jsp:include page="/WEB-INF/jsp/footer.jsp"/>
