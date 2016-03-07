@@ -43,6 +43,12 @@ public class AccountLockCommand extends AbstractCommand{
 			List users = new ArrayList();
 
             for(int i = 0;i < targets.length;i++){
+                Calendar cal1=(Calendar)cal.clone();
+                cal1.add(Calendar.HOUR_OF_DAY,Integer.parseInt(endDate[i]));
+                String end = formatter.format(cal1.getTime());
+                System.out.print("endDate"+endDate[i]);
+                System.out.print("end"+end);
+
                 Map params = new HashMap();
                 params.put("value",targets[i]);
                 params.put("where","where user_id=?");
@@ -51,7 +57,7 @@ public class AccountLockCommand extends AbstractCommand{
 
 				params.put("userId",targets[i]);
                 params.put("lockStartDate",now);
-                params.put("lockEndDate",endDate[i]);
+                params.put("lockEndDate",end);
                 params.put("userbean",ub);
                 params.put("userStatus",status[i]);
 

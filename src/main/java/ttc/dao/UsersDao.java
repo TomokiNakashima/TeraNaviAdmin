@@ -37,12 +37,12 @@ public class UsersDao implements AbstractDao{
                 sql.append((String)map.get("join"));
             }
 
-            sql.append("where user_status_flag=?");
 
             if(map.containsKey("where")){
                 sql.append((String)map.get("where"));
+            }else{
+                sql.append("where user_status_flag=?");
             }
-
             pst=cn.prepareStatement(new String(sql));
 
             pst.setString(1,(String)map.get("userStatus"));
@@ -278,7 +278,6 @@ public class UsersDao implements AbstractDao{
             sql.append("fk_secret_question_id,user_profile,secret_answer from users ");
             sql.append((String)map.get("where"));
             pst = cn.prepareStatement(new String(sql));
-
             pst.setString(1,(String)map.get("value"));
 
             ResultSet rs = pst.executeQuery();

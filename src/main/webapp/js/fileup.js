@@ -38,3 +38,29 @@ function onDrop(event){
 function onDragOver(event){
 	event.preventDefault();
 }
+
+
+function upLoad(){
+	var file=$("#file-3").val();
+	if(window.confirm('送信しますか？')){
+		ajaxSettings = {
+			type:'post',
+			url:'/TeraNaviAdmin/UserCsv',
+			dataType:'json',
+			data:null
+
+		};
+		ajaxSettings.data = {
+			ajax:"true",
+			filename:file
+		};
+
+		ajaxSettings.success = function(data){
+			alert("OK")
+		}
+		ajax = $.ajax(ajaxSettings);
+	}
+	else{
+		window.alert('キャンセルされました');
+	}
+}
