@@ -1,4 +1,4 @@
-package ttc.util.mailer;
+    package ttc.util.mailer;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

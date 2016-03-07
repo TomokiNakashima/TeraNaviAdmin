@@ -32,6 +32,13 @@
                 EmailAddress:${result.address}<br>
                 カテゴリー:${result.category}</p>
             <p>本文:${result.contactBody}</p>
+            <h2>メールフォーム</h2>
+            <form action="replyContact" method="post">
+                <input type="hidden" name="toAddress" value="${result.address}">
+                件名：<input type="text" name="title"><br>
+                本文：<input type="text" name="mess">
+                <input type="submit" value="送信">
+            </form>
 
 
 
