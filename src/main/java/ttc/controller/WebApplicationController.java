@@ -51,15 +51,19 @@ public class WebApplicationController implements ApplicationController{
 		String path = reqc.getCommandPath();
 
 		boolean flag = false;
-		
+
 		try{
 			flag = req.getParameter("ajax").equals("true");
 		}catch(Exception e){
-			
+
 		}
-		
+
 		if(flag){
 			try{
+				if(path.equals("login")){
+					HttpSession session = req.getSession(true);
+					session.setAttribute("loginUser",resc.getResult());
+				}
 				res.setContentType("application/json;charset=UTF-8");
 				PrintWriter writer = res.getWriter();
 				writer.print(new Gson().toJson(resc.getResult()));

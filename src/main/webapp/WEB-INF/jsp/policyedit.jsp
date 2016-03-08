@@ -29,7 +29,7 @@ pageEncoding="UTF-8"
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">管理者</a>
+                    <a class="navbar-brand">${sessionScope.loginUser.userName}</a>
                 </div>
                 <div style="color: white;
 

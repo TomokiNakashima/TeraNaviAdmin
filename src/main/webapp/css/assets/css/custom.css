@@ -375,3 +375,28 @@ line-height: 1.428571429;
 }
 
 }
+
+
+.caption.admin{
+    color: #D40A0A;
+}
+
+.thumbnail button{
+    color: #F37518;
+}
+
+.thumbnail img{
+    margin-left: 70px;
+    height: 50px;
+    width: 50px;
+}
+
+.thumbnail p{
+    font-size: 90%;
+    padding-top: 5px;
+}
+
+.caption{
+    margin-left: 27px;
+
+}

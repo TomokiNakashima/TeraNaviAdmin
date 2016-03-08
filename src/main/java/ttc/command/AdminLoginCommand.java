@@ -31,12 +31,13 @@ public class AdminLoginCommand extends AbstractCommand {
             Map params = new HashMap();
             params.put("value",loginId);
             params.put("where","where login_id=?");
-
+            params.put("lastLoginDate","current_timestamp");
 
             MySqlConnectionManager.getInstance().beginTransaction();
             AbstractDaoFactory factory = AbstractDaoFactory.getFactory("users");
             AbstractDao dao = factory.getAbstractDao();
             UserBean ub = (UserBean)dao.read(params);
+            int r = dao.update(params);
 
             MySqlConnectionManager.getInstance().commit();
             MySqlConnectionManager.getInstance().closeConnection();

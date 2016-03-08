@@ -5,7 +5,7 @@ $(function(){
         dataType:'json',
         data:null,
         success:function(data){
-            var lastTime=$("#lastTime").text();
+            var lastTime=$("#last_time").text();
             var count=0;
 
             console.log(lastTime)
