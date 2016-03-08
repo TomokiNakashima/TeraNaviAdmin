@@ -29,7 +29,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">管理者</a>
+                <a class="navbar-brand">${sessionScope.loginUser.userName}</a>
             </div>
             <div style="color: white;
 
@@ -84,7 +84,7 @@
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="ユーザー名" id="inputUserName">
                 <span class="input-group-btn">
-                    <button class="btn btn-default fa fa-search" type="button" style="height:140%" onclick="search()" id="search_button"></button>
+                    <button class="btn btn-default fa fa-search" type="button" style="height:34px" onclick="search()" id="search_button"></button>
                 </span>
             </div><!-- /input-group -->
         </div><!-- /.col-lg-6 -->
@@ -92,7 +92,7 @@
         <!-- print area -->
         <div class="col-md-8" style="padding:50px;margin-left:15%">
             <div class="row" id="printArea">
-                <img src="http://pic.58pic.com/58pic/11/44/45/35Y58PICeC9.jpg" style="margin-left=32%;">
+                <img src="http://pic.58pic.com/58pic/11/44/45/35Y58PICeC9.jpg" style="margin-left:15%;">
             </div>
         </div>
     </div>

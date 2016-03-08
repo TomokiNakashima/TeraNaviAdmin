@@ -2,7 +2,14 @@ $(function(){
     $("button").on("click",function(){
         login();
     });
+
 });
+$(document).keydown(function(e) {
+    if(e.keyCode==13) {
+        $("button").click();
+    }
+});
+
 
 function login(){
     ajaxSettings = {
@@ -19,7 +26,7 @@ function login(){
     };
 
     ajaxSettings.success = function(data){
-    Location.href="/TeraNaviAdmin/dashboard";
+    location.href="/TeraNaviAdmin/dashboard";
     }
 
     ajaxSettings.error = function (XMLHttpRequest, textStatus, errorThrown) {
