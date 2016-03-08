@@ -16,7 +16,8 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>L
+    <script src="/TeraNaviAdmin/js/login.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <%-- <script type="text/javascript" src="/TeraNaviAdmin/script.js"></script> --%>
@@ -65,7 +66,7 @@
     	border: none;
     	outline: none;
     	padding: 10px;
-    	font-size: 13px;
+    	font-size: 22px;
     	color: #fff;
     	text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
     	border: 1px solid rgba(0,0,0,0.3);
@@ -82,13 +83,14 @@
     </style>
 </head>
 <body>
-    <div class="text-center text-waring" style="font-size:300%">TeraNavi管理者</div>
+    <div class="text-center text-waring" style="font-size:800%;color:#A9A9A9;margin-top:5%">TeraNavi管理者</div>
     <div class="login">
     	<h1>Login</h1>
-    	<form method="post" class="form-group" action="front/login">
-    		<input type="text" name="loginId" placeholder="ユーザー名" required="required" />
-            <input type="password" name="password" placeholder="パスワード" required="required" />
-    		<button type="submit" class="btn btn-primary btn-large" style="width:100%">ログイン</button>
+    	<form class="form-group">
+    		<input type="text" id="loginId" placeholder="ユーザー名" required="required" />
+            <input type="password" id="password" placeholder="パスワード" required="required" />
+            <div id="report" style="color:#D40A0A;font-size:15px"></div>
+    		<button type="button" class="btn btn-primary btn-large" style="width:100%">ログイン</button>
     	</form>
     </div>
 </body>

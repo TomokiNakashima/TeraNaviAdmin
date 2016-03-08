@@ -5,8 +5,8 @@ import ttc.context.ResponseContext;
 
 import ttc.util.MySqlConnectionManager;
 
-import ttc.exception.IntegrationException;
-import ttc.exception.BusinessLogicException;
+import ttc.exception.integration.IntegrationException;
+import ttc.exception.business.BusinessLogicException;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -14,6 +14,7 @@ import java.util.HashMap;
 import ttc.util.factory.AbstractDaoFactory;
 import ttc.dao.AbstractDao;
 import ttc.bean.UserBean;
+import ttc.util.PasswordSaffer;
 
 public class AdminLoginCommand extends AbstractCommand {
 
@@ -25,7 +26,7 @@ public class AdminLoginCommand extends AbstractCommand {
             String loginId=reqc.getParameter("loginId")[0];
             String password=reqc.getParameter("password")[0];
 
-
+			password = PasswordSaffer.getStretchedPassword(password, loginId);
 
             Map params = new HashMap();
             params.put("value",loginId);
@@ -49,7 +50,7 @@ public class AdminLoginCommand extends AbstractCommand {
                     ub.setPassword("dummy");
                     ub.setSecretAnswer("dummy");
                     resc.setResult(ub);
-                    resc.setTarget("adminLoginResult");
+                    resc.setTarget("dashboard");
 
                     return resc;
                 }else{

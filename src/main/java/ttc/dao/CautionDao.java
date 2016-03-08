@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import ttc.bean.CautionBean;
 import ttc.bean.Bean;
 import ttc.bean.UserBean;
-import ttc.exception.IntegrationException;
+import ttc.exception.integration.IntegrationException;
 import ttc.util.MySqlConnectionManager;
 
 import ttc.exception.NotLineException;
@@ -45,7 +45,9 @@ public class CautionDao implements AbstractDao{
             ResultSet rs = pst.executeQuery();
 
             sql = new StringBuffer();
-            sql.append("select user_name,user_icon_path,mail_address ");
+
+            sql.append("select user_name,user_icon_path,user_status_flag ");
+            //sql.append("select user_name,user_icon_path,mail_address ");
             sql.append("from users where user_id = ?");
 
             String uSql = new String(sql);
@@ -56,6 +58,7 @@ public class CautionDao implements AbstractDao{
 
                 CautionBean bean = new CautionBean();
                 bean.setId(rs.getString(1));
+                bean.setCautionUser(rs.getString(3));
                 bean.setDate(rs.getString(4));
                 bean.setTitle(rs.getString(5));
                 bean.setCautionBody(rs.getString(6));
@@ -89,6 +92,8 @@ public class CautionDao implements AbstractDao{
 
                 user.setUserName(rsx.getString(1));
                 user.setIconPath(rsx.getString(2));
+                user.setUserStatus(rsx.getString(3));
+
                 bean.setCautionUserId(user);
 
                 result.add(bean);

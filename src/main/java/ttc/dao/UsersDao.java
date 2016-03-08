@@ -14,7 +14,7 @@ import java.sql.SQLException;
 
 import ttc.bean.UserBean;
 import ttc.bean.Bean;
-import ttc.exception.IntegrationException;
+import ttc.exception.integration.IntegrationException;
 import ttc.util.MySqlConnectionManager;
 
 import ttc.exception.NotLineException;
@@ -37,12 +37,12 @@ public class UsersDao implements AbstractDao{
                 sql.append((String)map.get("join"));
             }
 
-            sql.append("where user_status_flag=?");
 
             if(map.containsKey("where")){
                 sql.append((String)map.get("where"));
+            }else{
+                sql.append("where user_status_flag=?");
             }
-
             pst=cn.prepareStatement(new String(sql));
 
             pst.setString(1,(String)map.get("userStatus"));
@@ -107,7 +107,7 @@ public class UsersDao implements AbstractDao{
             sql.append("update users set user_name=?,user_name_kana=?,sex_visible_flag=?,");
             sql.append("mail_address=?,password=?,user_header_path=?,user_icon_path=?,");
             sql.append("last_login_date=?,user_status_flag=?,user_lock_start_date=?,user_lock_end_date=?,");
-            sql.append("user_profile=? where user_id=?");
+            sql.append("user_profile=?,admin_flag=? where user_id=?");
             pst = cn.prepareStatement(new String(sql));
 
             //ユーザーの名前を変更
@@ -182,9 +182,15 @@ public class UsersDao implements AbstractDao{
             }else{
                 pst.setString(12,ub.getProfile());
             }
+            //管理者権限の変更
+            if(map.containsKey("adminFlag")){
+                pst.setString(13,(String)map.get("adminFlag"));
+            }else{
+                pst.setString(13,ub.getAdminFlag());
+            }
 
 
-            pst.setInt(13,Integer.parseInt((String)map.get("userId")));
+            pst.setInt(14,Integer.parseInt((String)map.get("userId")));
 
 
             result = pst.executeUpdate();
@@ -243,7 +249,7 @@ public class UsersDao implements AbstractDao{
             rs.next();
 
             count = rs.getInt(1);
-
+            System.out.println("insert:"+count);
         }catch(SQLException e){
             MySqlConnectionManager.getInstance().rollback();
             throw new IntegrationException(e.getMessage(),e);
@@ -272,7 +278,6 @@ public class UsersDao implements AbstractDao{
             sql.append("fk_secret_question_id,user_profile,secret_answer from users ");
             sql.append((String)map.get("where"));
             pst = cn.prepareStatement(new String(sql));
-
             pst.setString(1,(String)map.get("value"));
 
             ResultSet rs = pst.executeQuery();

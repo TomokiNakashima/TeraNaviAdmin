@@ -6,6 +6,7 @@
 package ttc;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -31,10 +32,11 @@ import ttc.util.MySqlConnectionManager;
 import ttc.util.factory.AbstractDaoFactory;
 import ttc.dao.AbstractDao;
 import ttc.bean.UserBean;
-import ttc.exception.IntegrationException;
+import ttc.exception.integration.IntegrationException;
 
 import java.util.Map;
 import java.util.HashMap;
+import ttc.util.PasswordSaffer;
 
 
 /**
@@ -54,12 +56,12 @@ public class UserAddServlet extends HttpServlet {
 	 */
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException {
-		
+
 		request.setCharacterEncoding("utf-8");
-		
+
 		String path = "/tmp";
 		String fileName = null;
-		
+
 		DiskFileItemFactory factory = new DiskFileItemFactory();
 		ServletFileUpload sfu = new ServletFileUpload(factory);
 		try{
@@ -67,15 +69,15 @@ public class UserAddServlet extends HttpServlet {
 			Iterator it = list.iterator();
 			while(it.hasNext()){
 				FileItem item = (FileItem)it.next();
-				
+
 				if(!item.isFormField()){
 					fileName = item.getName();
-					
+
 					if((fileName != null) && (!fileName.equals(""))){
 						fileName = (new File(fileName)).getName();
-						
+
 						item.write(new File(path+"//"+fileName));
-						
+
 					}
 				}
 			}
@@ -86,20 +88,20 @@ public class UserAddServlet extends HttpServlet {
 		}
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(path + "/" + fileName)),"Shift_JIS"));
-		
+
 		String line = null;
-		
+
 		List<String[]> users = new ArrayList<String[]>();
-		
+
 		br.readLine();
 		while((line = br.readLine())!=null){
 			String[] cols = line.split(",");
 			users.add(cols);
 		}
-		
+
 		File df = new File(path + "/" + fileName);
 		df.delete();
-		
+
 		try{
 			MySqlConnectionManager.getInstance().beginTransaction();
 			AbstractDaoFactory daoFactory = AbstractDaoFactory.getFactory("users");
@@ -108,8 +110,14 @@ public class UserAddServlet extends HttpServlet {
 			for(String[] user : users){
 				Map params = new HashMap();
 
-				params.put("loginId",user[0]);
-				params.put("password", user[1]);
+				String loginId = user[0];
+				params.put("loginId",loginId);
+				
+				String password = user[1];
+				
+				password = PasswordSaffer.getStretchedPassword(password, loginId);
+				
+				params.put("password", password);
 				params.put("userName",user[2]);
 				params.put("nameKana",user[3]);
 				params.put("sex",user[4]);
@@ -119,24 +127,24 @@ public class UserAddServlet extends HttpServlet {
 				}else{
 					sexVisibleFlag = "1";
 				}
-				
+
 				params.put("sexVisibleFlag",sexVisibleFlag);
-				
-				
+
+
 				String[] date = user[6].split("/");
 				StringBuilder bDate = new StringBuilder();
 				bDate.append(date[0]);
-				
+
 				if(date[1].length()==1){
 					bDate.append("0");
 				}
 				bDate.append(date[1]);
-				
+
 				if(date[2].length()==1){
 					bDate.append("0");
 				}
 				bDate.append(date[2]);
-				
+
 				params.put("birthDate",new String(bDate));
 				params.put("mailAddress",user[7]);
 				params.put("quepstionId",user[8]);
@@ -145,22 +153,27 @@ public class UserAddServlet extends HttpServlet {
 
 				dao.insert(params);
 			}
-			
+
 			MySqlConnectionManager.getInstance().commit();
 			MySqlConnectionManager.getInstance().closeConnection();
-			
-			request.setAttribute("result", users);
-			
+
+
+			String responseJson = "{\"responseMessage\" : \"サーブレットからの返信です\"}";
+			response.setContentType("application/json;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.print(responseJson);
+			// request.setAttribute("result", users);
+
 		}catch(IntegrationException e){
 			throw new IOException(e.getMessage(),e);
 		}catch(Exception e){
 			throw new IOException(e.getMessage(),e);
 		}
-		
-		
-		RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/jsp/csvAddResult.jsp");
-		dis.forward(request, response);
-		
+
+
+		// RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/jsp/csvAddResult.jsp");
+		// dis.forward(request, response);
+
 	}
 
 	// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

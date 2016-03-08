@@ -7,8 +7,8 @@ package ttc.command;
 import ttc.context.RequestContext;
 import ttc.context.ResponseContext;
 
-import ttc.exception.IntegrationException;
-import ttc.exception.BusinessLogicException;
+import ttc.exception.integration.IntegrationException;
+import ttc.exception.business.BusinessLogicException;
 
 import ttc.util.Mailler;
 import ttc.util.GMailler;
@@ -23,17 +23,17 @@ public class SendMailCommand extends AbstractCommand{
 			String pass = reqc.getParameter("pass")[0];
 			String title = reqc.getParameter("title")[0];
 			String mess= reqc.getParameter("mess")[0];
-			
+
 			Mailler mailler = new GMailler();
-			
+
 			mailler.setAddress(address);
 			mailler.setAccount(address);
 			mailler.setPass(pass);
-			
+
 			String result = mailler.sendMail(toAddress, title, mess);
-			
+
 			System.out.println(result);
-			
+
 			resc.setResult(result);
 
 			return resc;

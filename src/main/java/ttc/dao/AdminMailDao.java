@@ -16,7 +16,7 @@ import ttc.bean.UserBean;
 import ttc.bean.BlogBean;
 import ttc.bean.TagBean;
 import ttc.bean.CommentBean;
-import ttc.exception.IntegrationException;
+import ttc.exception.integration.IntegrationException;
 
 public class AdminMailDao implements AbstractDao{
 

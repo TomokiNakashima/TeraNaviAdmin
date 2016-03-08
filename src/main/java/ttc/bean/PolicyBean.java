@@ -1,55 +1,60 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package ttc.bean;
 
+/**
+ *
+ * @author Masaki
+ */
 public class PolicyBean implements Bean{
-    private String policyId;
-    private String policyDate;
-    private String policyBody;
+	private String id;
+	private String date;
+	private String body;
 
 	/**
-	* Returns value of policyId
-	* @return
-	*/
-	public String getPolicyId() {
-		return policyId;
+	 * @return the id
+	 */
+	public String getId() {
+		return id;
 	}
 
 	/**
-	* Sets new value of policyId
-	* @param
-	*/
-	public void setPolicyId(String policyId) {
-		this.policyId = policyId;
+	 * @param id the id to set
+	 */
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	/**
-	* Returns value of policyDate
-	* @return
-	*/
-	public String getPolicyDate() {
-		return policyDate;
+	 * @return the date
+	 */
+	public String getDate() {
+		return date;
 	}
 
 	/**
-	* Sets new value of policyDate
-	* @param
-	*/
-	public void setPolicyDate(String policyDate) {
-		this.policyDate = policyDate;
+	 * @param date the date to set
+	 */
+	public void setDate(String date) {
+		this.date = date;
 	}
 
 	/**
-	* Returns value of policyBody
-	* @return
-	*/
-	public String getPolicyBody() {
-		return policyBody;
+	 * @return the body
+	 */
+	public String getBody() {
+		return body;
 	}
 
 	/**
-	* Sets new value of policyBody
-	* @param
-	*/
-	public void setPolicyBody(String policyBody) {
-		this.policyBody = policyBody;
+	 * @param body the body to set
+	 */
+	public void setBody(String body) {
+		this.body = body;
 	}
+	
+	
 }

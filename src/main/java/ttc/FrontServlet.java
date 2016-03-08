@@ -24,7 +24,7 @@ public class FrontServlet extends HttpServlet{
 				RequestContext reqc = app.getRequest(req);
 
 				ResponseContext resc = null;
-			
+
 				resc = app.handleRequest(reqc);
 				resc.setResponse(res);
 				app.handleResponse(reqc, resc);

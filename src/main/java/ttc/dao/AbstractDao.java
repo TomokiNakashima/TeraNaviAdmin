@@ -3,7 +3,7 @@ package ttc.dao;
 import java.util.List;
 import java.util.Map;
 
-import ttc.exception.IntegrationException;
+import ttc.exception.integration.IntegrationException;
 
 import ttc.bean.Bean;
 

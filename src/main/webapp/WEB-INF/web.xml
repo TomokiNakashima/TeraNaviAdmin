@@ -164,12 +164,22 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>dashboart</servlet-name>
-        <jsp-file>/WEB-INF/jsp/dashboart.jsp</jsp-file>
+        <servlet-name>dashboard</servlet-name>
+        <jsp-file>/WEB-INF/jsp/dashboard.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
-        <servlet-name>dashboart</servlet-name>
-        <url-pattern>/dashboart</url-pattern>
+        <servlet-name>dashboard</servlet-name>
+        <url-pattern>/dashboard</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>userManagement</servlet-name>
+        <jsp-file>/WEB-INF/jsp/userManagement.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>userManagement</servlet-name>
+        <url-pattern>/userManagement</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>

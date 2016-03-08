@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import ttc.bean.Bean;
 
 
-import ttc.exception.IntegrationException;
+import ttc.exception.integration.IntegrationException;
 
 import ttc.util.MySqlConnectionManager;
 
@@ -26,11 +26,11 @@ public class SignUpKeysDao implements AbstractDao{
             StringBuffer sql = new StringBuffer();
             sql.append("insert into sign_up_keys ");
             sql.append("values(?,0)");
-            
+
             pst = cn.prepareStatement(new String(sql));
-            
+
             pst.setString(1,(String)map.get("key"));
-            
+
             result = pst.executeUpdate();
         }catch(SQLException e){
             MySqlConnectionManager.getInstance().rollback();
@@ -46,7 +46,7 @@ public class SignUpKeysDao implements AbstractDao{
         }
 
         return result;
-        
+
     }
     public int update(Map map)throws IntegrationException{
         return 0;
