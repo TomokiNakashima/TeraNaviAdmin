@@ -82,15 +82,29 @@
             <div id="page-inner">
                 <table class="table table-hover">
                     <caption><h3>お問い合わせ</h3></caption>
-                    <tbody>
-                        <tr>
-                            <th>No</th>
-                            <th>名前</th>
-                            <th>カテゴリ</th>
-                            <th>タイトル</th>
-                            <th>時間</th>
-                            <th>詳細</th>
-                        </tr>
+                    <col style="width: 5%;">
+                    <col style="width: 8%;">
+                    <col style="width: 15%;">
+                    <col style="width: 35%;">
+                    <col style="width: 22%;">
+                    <col style="width: 15%;">
+                    <tr>
+                        <th>No</th>
+                        <th>名前</th>
+                        <th>カテゴリ</th>
+                        <th>タイトル</th>
+                        <th>時間</th>
+                        <th>詳細</th>
+                    </tr>
+                </table>
+                <div id="table_scroll">
+                    <table class="table table-hover">
+                        <col style="width: 5%;">
+                        <col style="width: 8%;">
+                        <col style="width: 15%;">
+                        <col style="width: 35%;">
+                        <col style="width: 22%;">
+                        <col style="width: 15%;">
                         <c:forEach var="contact" items="${result}">
                             <tr id="contactId_${contact.id}">
                                 <td>${contact.id}</td>
@@ -101,11 +115,10 @@
                                 <td hidden>${contact.contactBody}</td>
                                 <td hidden>${contact.address}</td>
                                 <td class="col-md-1 pull-right">
-                                    <button type="button" class="btn btn-primary" onclick="read(${contact.id})">詳細へ</button>
+                                    <button type="button" class="btn btn-primary" onclick="read(${contact.id})" style="margin-left:38px">詳細へ</button>
                                 </td>
                             </tr>
                         </c:forEach>
-                    </tbody>
                 </table>
 
                 <div id="contact-modal" class="modal fade" aria-hidden="true" style="display: none;">

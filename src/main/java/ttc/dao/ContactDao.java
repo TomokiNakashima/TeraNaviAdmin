@@ -102,7 +102,7 @@ public class ContactDao implements AbstractDao{
             StringBuffer sql = new StringBuffer();
             sql.append("select contact_id,contact_user_name,contact_title,contact_body,");
             sql.append("contact_date,contact_address,contact_category ");
-            sql.append("from contacts");
+            sql.append("from contacts order by contact_date desc");
 
             pst = cn.prepareStatement(new String(sql));
 
