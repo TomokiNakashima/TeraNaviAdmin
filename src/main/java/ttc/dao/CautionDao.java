@@ -37,7 +37,7 @@ public class CautionDao implements AbstractDao{
             StringBuffer sql = new StringBuffer();
 
             sql.append("select * ");
-            sql.append("from cautions ");
+            sql.append("from cautions order by caution_id desc");
 
             pst = cn.prepareStatement(new String(sql));
 
