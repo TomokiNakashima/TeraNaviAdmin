@@ -7,6 +7,7 @@ public class CautionBean implements Bean{
     private String cautionBody;
     private String reportPageUrl;
     private String cautionUser;
+    private String cautionFlag;
     private UserBean userId;
     private UserBean cautionUserId;
 
@@ -120,6 +121,22 @@ public class CautionBean implements Bean{
     */
     public void setCautionUserId(UserBean cautionUserId) {
     	this.cautionUserId = cautionUserId;
+    }
+
+    /**
+    * Returns value of cautionFlag
+    * @return
+    */
+    public String getCautionFlag() {
+    	return cautionFlag;
+    }
+
+    /**
+    * Sets new value of cautionFlag
+    * @param
+    */
+    public void setCautionFlag(String cautionFlag) {
+    	this.cautionFlag = cautionFlag;
     }
 
     /**

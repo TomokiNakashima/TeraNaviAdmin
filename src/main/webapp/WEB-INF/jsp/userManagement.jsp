@@ -23,7 +23,7 @@ pageEncoding="UTF-8"
     <link rel="stylesheet" type="text/css" href="/TeraNaviAdmin/css/default.css">
     <link href="/TeraNaviAdmin/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
     <link href="/TeraNaviAdmin/css/custom.css" media="all" rel="stylesheet" type="text/css" />
-</head><body>
+</head><body style="overflow:hidden">
     <div id="wrapper">
             <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
                 <div class="navbar-header">
@@ -144,19 +144,19 @@ pageEncoding="UTF-8"
                         </div> --%>
                         <div class="form-group">
                             <label class="control-label" for="Title">タイトル</label>
-                            <input class="form-control" id="cautionTitle" name="title" type="text">
+                            <input class="form-control" id="cautionTitle" name="title" type="text" readonly>
                         </div>
                         <div class="form-group">
                             <label class="control-label">被通報者</label>
-                            <input class="form-control" id="cautionUser" type="email" name="address">
+                            <input class="form-control" id="cautionUser" type="email" name="address" readonly>
                         </div>
                         <div class="form-group">
                             <label class="control-label">通報者</label>
-                            <input class="form-control" id="user" type="email" name="address">
+                            <input class="form-control" id="user" type="email" name="address" readonly>
                         </div>
                         <div class="form-group">
                             <label class="control-label">通報文</label>
-                            <textarea class="form-control" id="cautionBody" name="body"></textarea>
+                            <textarea class="form-control" id="cautionBody" name="body" readonly></textarea>
                         </div>
                         <button type="button" id="cautionBtn" class="btn btn-default pull-right">警告する</button>
                     </form>

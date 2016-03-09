@@ -28,7 +28,7 @@ function search(){
                 var nameId="admin";
                 var htmlData;
 
-                htmlData="<div class='col-md-3'>"+
+                htmlData="<div class='col-md-3 card'>"+
                 "<div class='thumbnail'>"+
                 "<span>";
 

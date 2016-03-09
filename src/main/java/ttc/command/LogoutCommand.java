@@ -32,7 +32,7 @@ public class LogoutCommand extends AbstractCommand{
 
 
 
-            resc.setTarget("LogoutResult");
+            resc.setTarget("index");
 
             return resc;
         }catch(NullPointerException e){
