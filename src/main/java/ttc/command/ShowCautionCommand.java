@@ -22,6 +22,7 @@ public class ShowCautionCommand extends AbstractCommand{
         try{
             RequestContext reqc = getRequestContext();
 
+            String flag = reqc.getParameter("flag")[0];
             HashMap params = new HashMap();
 
 
@@ -31,6 +32,9 @@ public class ShowCautionCommand extends AbstractCommand{
             AbstractDao dao= fact.getAbstractDao();
 
             List result = dao.readAll(params);
+            if(flag=="true"){
+                int r = dao.update(params);
+            }
 
             MySqlConnectionManager.getInstance().commit();
             MySqlConnectionManager.getInstance().closeConnection();

@@ -14,6 +14,7 @@ function showCaution(){
         };
         ajaxSettings.data = {
             ajax:"true",
+            flag:"true"
         };
 
         ajaxSettings.success = function(data){
@@ -43,7 +44,7 @@ function showCaution(){
                 "</div>"+
                 "</div>"+
                 "<div class='center-block operate_area'>"+
-                "<button type='button' class='btn btn-warning caution_button' onclick='caution("+data[i]["id"]+")'>警告</button>"+
+                "<button type='button' class='btn btn-warning caution_button' onclick='caution("+data[i]["id"]+")'>通報内容</button>"+
                 "<select class='form-control lock_select' id='lock_select"+data[i]["cautionUser"]+"' onchange='lockAccount("+data[i]["cautionUser"]+")'>"+
                 "<option value='0'>ロック</option>"+
                 "<option value='24'>24時間</option>"+

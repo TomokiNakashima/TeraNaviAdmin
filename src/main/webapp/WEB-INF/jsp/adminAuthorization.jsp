@@ -17,9 +17,10 @@
     <link href="/TeraNaviAdmin/css/assets/js/morris/morris-0.4.3.min.css" rel="stylesheet">
     <!-- CUSTOM STYLES-->
     <link href="/TeraNaviAdmin/css/assets/css/custom.css" rel="stylesheet">
+    <link href="/TeraNaviAdmin/css/adminau.css" rel="stylesheet">
     <!-- GOOGLE FONTS-->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
-</head><body>
+</head><body style="overflow:hidden">
     <div id="wrapper">
         <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
