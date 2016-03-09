@@ -40,6 +40,7 @@ public class ShowContactCommand extends AbstractCommand{
             params.put("conId",conId);
 
             ContactBean bean=(ContactBean)dao.read(params);
+            int r = dao.update(params);
 
             MySqlConnectionManager.getInstance().commit();
             MySqlConnectionManager.getInstance().closeConnection();

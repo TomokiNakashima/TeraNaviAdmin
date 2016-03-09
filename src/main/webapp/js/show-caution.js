@@ -48,7 +48,7 @@ function showCaution(){
                 "<option value='0'>ロック</option>"+
                 "<option value='24'>24時間</option>"+
                 "<option value='48'>48時間</option>"+
-                "<option value='99999999'>無期限</option>"+
+                "<option value='9999999'>無期限</option>"+
                 "</select>"+
                 "</div>"+
                 "<div class='pull-right'>"+buttonData+
