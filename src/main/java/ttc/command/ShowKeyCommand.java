@@ -15,44 +15,27 @@ import java.util.HashMap;
 import ttc.util.factory.AbstractDaoFactory;
 import ttc.dao.AbstractDao;
 
-import java.util.Calendar;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
-import org.apache.commons.lang3.RandomStringUtils;
 
-public class KeyCreateCommand extends AbstractCommand {
+public class ShowKeyCommand extends AbstractCommand {
 
 	public ResponseContext execute(ResponseContext resc) throws BusinessLogicException {
 		try {
 			RequestContext reqc = getRequestContext();
-
-			int count = Integer.parseInt(reqc.getParameter("count")[0]);
-
-			Calendar calendar = Calendar.getInstance();
-			calendar.add(Calendar.DAY_OF_MONTH, count);
-			SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-			String endDate = formatter.format(calendar.getTime());
-			
-			System.out.println(endDate);
-			
-			String signKey = RandomStringUtils.randomAlphanumeric(5);
 
 			MySqlConnectionManager.getInstance().beginTransaction();
 			AbstractDaoFactory factory = AbstractDaoFactory.getFactory("keyCreate");
 			AbstractDao dao = factory.getAbstractDao();
 
 			Map param = new HashMap();
-			param.put("key", signKey);
-			param.put("endDate",endDate);
-			dao.insert(param);
+			
 			List result = dao.readAll(param);
 
 			MySqlConnectionManager.getInstance().commit();
 			MySqlConnectionManager.getInstance().closeConnection();
 
-			
-			
+
 			resc.setResult(result);
 			resc.setTarget("signkeyResult");
 			
