@@ -22,7 +22,7 @@ function keyResult(){
         var p=$("#create_table");
         p.empty();
 
-        p.append("<caption><h3>発行された登録キー一覧</h3></caption><tr><th>番号</th><th>キー</th><th>status</th></tr>");
+        p.append("<caption><h3>発行された登録キー一覧</h3></caption><tr><th>番号</th><th>キー</th><th>有効期限</th></tr>");
         for(var i=0;i<data.length;i++){
             p.append("<tr><td>"+(i+1)+"</td><td>"+data[i].signUpKey+"</td><td>"+data[i].keyValidDate+"</td></tr>");
         }
@@ -48,7 +48,7 @@ ajaxSettings2 = {
         var p=$("#create_table");
         p.empty();
 
-        p.append("<caption><h3>発行された登録キー一覧</h3></caption><tr><th>番号</th><th>キー</th><th>status</th></tr>");
+        p.append("<caption><h3>発行された登録キー一覧</h3></caption><tr><th>番号</th><th>キー</th><th>有効期限</th></tr>");
         for(var i=0;i<data.length;i++){
             p.append("<tr><td>"+(i+1)+"</td><td>"+data[i].signUpKey+"</td><td>"+data[i].keyValidDate+"</td></tr>");
         }
