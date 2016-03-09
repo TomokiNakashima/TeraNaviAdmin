@@ -29,19 +29,23 @@ public class KeyCreateCommand extends AbstractCommand {
 
 			int count = Integer.parseInt(reqc.getParameter("count")[0]);
 
+			//有効期限の設定のための日付の取得
 			Calendar calendar = Calendar.getInstance();
 			calendar.add(Calendar.DAY_OF_MONTH, count);
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 			String endDate = formatter.format(calendar.getTime());
 			
-			System.out.println(endDate);
-			
+//			登録キーとして使用するランダム文字列の取得
 			String signKey = RandomStringUtils.randomAlphanumeric(5);
 
 			MySqlConnectionManager.getInstance().beginTransaction();
 			AbstractDaoFactory factory = AbstractDaoFactory.getFactory("keyCreate");
 			AbstractDao dao = factory.getAbstractDao();
 
+//			使わなくなった登録キーをクリーンアップするためのメソッドの呼び出し
+//			updateメソッドの内部でdelete用のメソッドを呼び出してます
+			dao.update(new HashMap());
+			
 			Map param = new HashMap();
 			param.put("key", signKey);
 			param.put("endDate",endDate);

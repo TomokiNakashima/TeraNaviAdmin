@@ -54,7 +54,14 @@ public class SignUpKeysDao implements AbstractDao{
     }
 	
     public int update(Map map)throws IntegrationException{
-        PreparedStatement pst = null;
+//      有効期限の過ぎた登録キーを削除する処理を呼び出してます
+		int result = delete();
+
+        return result;
+    }
+	
+	private int delete()throws IntegrationException{
+		PreparedStatement pst = null;
         int result = 0;
         try{
             
@@ -62,15 +69,14 @@ public class SignUpKeysDao implements AbstractDao{
             cn = MySqlConnectionManager.getInstance().getConnection();
             MySqlConnectionManager.getInstance().beginTransaction();
             StringBuffer sql = new StringBuffer();
-            sql.append("update sign_up_keys set ");
-            sql.append("key_status = 1 ");
-            sql.append("where sign_up_key = ?");
+            sql.append("delete from sign_up_keys ");
+			sql.append("where key_valid_date < sysdate()");
+            
 
             pst = cn.prepareStatement( new String(sql) );
 
             //タイトルを変更
             
-            pst.setString(1,(String)map.get("key"));
 
             result = pst.executeUpdate();
 
@@ -88,7 +94,8 @@ public class SignUpKeysDao implements AbstractDao{
         }
 
         return result;
-    }
+	}
+	
     public Bean read(Map map)throws IntegrationException{
         PreparedStatement pst = null;
 		SignUpKeyBean bean = null;

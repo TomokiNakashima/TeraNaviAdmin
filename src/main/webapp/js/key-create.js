@@ -24,7 +24,7 @@ function keyResult(){
 
         p.append("<caption><h3>発行された登録キー一覧</h3></caption><tr><th>番号</th><th>キー</th><th>status</th></tr>");
         for(var i=0;i<data.length;i++){
-            p.append("<tr><td>"+i+"</td><td>"+data[i].signUpKey+"</td><td>"+data[i].keyValidDate+"</td></tr>");
+            p.append("<tr><td>"+(i+1)+"</td><td>"+data[i].signUpKey+"</td><td>"+data[i].keyValidDate+"</td></tr>");
         }
         
         
@@ -50,7 +50,7 @@ ajaxSettings2 = {
 
         p.append("<caption><h3>発行された登録キー一覧</h3></caption><tr><th>番号</th><th>キー</th><th>status</th></tr>");
         for(var i=0;i<data.length;i++){
-            p.append("<tr><td>"+i+"</td><td>"+data[i].signUpKey+"</td><td>"+data[i].keyValidDate+"</td></tr>");
+            p.append("<tr><td>"+(i+1)+"</td><td>"+data[i].signUpKey+"</td><td>"+data[i].keyValidDate+"</td></tr>");
         }
         
         
