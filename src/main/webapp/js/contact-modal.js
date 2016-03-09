@@ -1,19 +1,25 @@
-var data={'id':'id',
-'Name':'name',
-'Category':'category',
-'Title':'title',
-'Date':'date',
-'Body':'body',
-'Address':'address'};
-var targetName=['id','Name','Category','Title','Date','Body','Address'];
-var contact="contact",replay="Replay";
+var outerData;
+var contact="contact",reply="Reply";
 function read(id){
-    var tr=$("#contactId_"+id);
-    var l=tr.children().length;
-    for(i=0;i<l-1;i++){
-        data[targetName[i]]=tr.children().eq(i).text();
-    }
-    formWrite(true);
+
+        ajaxSettings = {
+            type:'post',
+            url:'/TeraNaviAdmin/front/showcon',
+            dataType:'json',
+            data:null
+
+        };
+        ajaxSettings.data = {
+            ajax:"true",
+            conId:id,
+        };
+
+        ajaxSettings.success = function(data){
+            outerData=data;
+            $("#contactId_"+id).css("font-weight",100);
+            formWrite(true);
+        }
+        ajax = $.ajax(ajaxSettings);
 }
 
 function formWrite(flag){
@@ -22,18 +28,18 @@ function formWrite(flag){
         p=contact;
         $("#mail-modal").modal("show");
     }else{
-        p=contact+replay;
+        p=contact+reply;
         $("#mail-modal").modal("hide");
         $("#contact-modal").modal("show");
     }
 
-    for(var i=0;i<7;i++){
-        var str;
-        if((i==5||i==3)&&(!flag)){
-            str="Re:"+data[targetName[i]];
-        }else {
-            str=data[targetName[i]];
-        }
-        $("#"+p+targetName[i]).val(str);
+    $("#"+p+"Name").val(outerData["userName"]);
+    if(flag){
+        $("#"+p+"Title").val(outerData["title"]);
+    }else {
+        $("#"+p+"Title").val("Re:"+outerData["title"]);
     }
+    $("#"+p+"Address").val(outerData["address"]);
+    $("#"+p+"Category").val(outerData["category"]);
+    $("#"+p+"Body").val(outerData["contactBody"]);
 }

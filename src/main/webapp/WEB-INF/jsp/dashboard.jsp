@@ -39,8 +39,7 @@
                         padding: 15px 50px 5px 50px;
                         float: right;
                         font-size: 16px;">Last access : <span id="lastTime">${sessionScope.loginUser.adminLastLoginDate}</span> &nbsp;
-                        <input type="hidden" id="last_time" value="${sessionScope.loginUser.lastLoginDate}">
-                        <a href="/TeraNavi/front/logout" class="btn btn-danger square-btn-adjust">ログアウト</a>
+                        <a href="/TeraNaviAdmin/front/logout" class="btn btn-danger square-btn-adjust">ログアウト</a>
                     </div>
                 </nav>
                 <!-- /. NAV TOP -->

@@ -19,7 +19,10 @@
     <link href="/TeraNaviAdmin/css/assets/css/custom.css" rel="stylesheet">
     <!-- GOOGLE FONTS-->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
-</head><body>
+        <style>
+
+        </style>
+</head><body style="overflow:hidden">
     <div id="wrapper">
         <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -97,7 +100,7 @@
                         <th>詳細</th>
                     </tr>
                 </table>
-                <div id="table_scroll">
+                <div id="table_scroll" style="height:700px;overflow-y:scroll">
                     <table class="table table-hover">
                         <col style="width: 5%;">
                         <col style="width: 8%;">
@@ -106,20 +109,27 @@
                         <col style="width: 22%;">
                         <col style="width: 15%;">
                         <c:forEach var="contact" items="${result}">
-                            <tr id="contactId_${contact.id}">
+                            <c:choose>
+                                <c:when test = "${contact.readFlag == '0'}">
+                                    <tr id="contactId_${contact.id}" style="font-weight:bold">
+                                </c:when>
+                                <c:otherwise>
+                                    <tr id="contactId_${contact.id}">
+                                </c:otherwise>
+                            </c:choose>
+
                                 <td>${contact.id}</td>
                                 <td>${contact.userName}</td>
                                 <td>${contact.category}</td>
                                 <td>${contact.title}</td>
                                 <td>${contact.date}</td>
-                                <td hidden>${contact.contactBody}</td>
-                                <td hidden>${contact.address}</td>
                                 <td class="col-md-1 pull-right">
                                     <button type="button" class="btn btn-primary" onclick="read(${contact.id})" style="margin-left:38px">詳細へ</button>
                                 </td>
                             </tr>
                         </c:forEach>
                 </table>
+            </div>
 
                 <div id="contact-modal" class="modal fade" aria-hidden="true" style="display: none;">
                     <div class="modal-dialog">
@@ -132,19 +142,19 @@
                                 <form>
                                     <div class="form-group">
                                         <label class="control-label" for="exampleInputName">お名前</label>
-                                        <input class="form-control" id="contactReplayName" name="name" type="text">
+                                        <input class="form-control" id="contactReplyName" name="name" type="text">
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label" for="exampleInputTitle">件名</label>
-                                        <input class="form-control" id="contactReplayTitle" name="title" type="text">
+                                        <input class="form-control" id="contactReplyTitle" name="title" type="text">
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label">メールアドレス</label>
-                                        <input class="form-control" id="contactReplayAddress" type="email" name="address">
+                                        <input class="form-control" id="contactReplyAddress" type="email" name="address">
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label">本文</label>
-                                        <textarea class="form-control" id="contactReplayBody" name="body" rows="6"></textarea>
+                                        <textarea class="form-control" id="contactReplyBody" name="body" rows="6"></textarea>
                                     </div>
                                     <button type="button" id="contactBtn" class="btn btn-default pull-right" onclick="sendMail()">送信する</button>
                                 </form>

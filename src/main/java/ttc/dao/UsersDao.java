@@ -179,7 +179,6 @@ public class UsersDao implements AbstractDao{
                 sql.append(map.get("where"));
                 sqlList.add(map.get("value"));
             }
-
             pst = cn.prepareStatement(new String(sql));
             for(int i=0;i<sqlList.size();i++){
                 pst.setString(i+1,(String)sqlList.get(i));

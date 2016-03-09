@@ -10,10 +10,9 @@ function newContact(){
         dataType:'json',
         data:null,
         success:function(data){
-            var lastTime=$("#last_time").text();
             var count=0;
             for(var i=0;i<data.length;i++){
-                if(lastTime<data[i]["date"]){
+                if(data[i]["readFlag"]=='0'){
                     count++;
                 }
             }

@@ -42,7 +42,7 @@ pageEncoding="UTF-8"
                 float: right;
 
                 font-size: 16px;">Last access : ${sessionScope.loginUser.adminLastLoginDate} &nbsp;
-                <a href="/TeraNavi/front/logout" class="btn btn-danger square-btn-adjust">ログアウト</a>
+                <a href="/TeraNaviAdmin/front/logout" class="btn btn-danger square-btn-adjust">ログアウト</a>
             </div>
         </nav>
         <!-- /. NAV TOP -->
