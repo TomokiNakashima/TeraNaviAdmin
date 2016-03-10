@@ -87,7 +87,7 @@ public class UserAddServlet extends HttpServlet {
 			throw new IOException(e.getMessage(),e);
 		}
 
-		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(path + "/" + fileName)),"Shift_JIS"));
+		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(path + "/" + fileName)),"utf-8"));
 
 		String line = null;
 
@@ -112,11 +112,11 @@ public class UserAddServlet extends HttpServlet {
 
 				String loginId = user[0];
 				params.put("loginId",loginId);
-				
+
 				String password = user[1];
-				
+
 				password = PasswordSaffer.getStretchedPassword(password, loginId);
-				
+
 				params.put("password", password);
 				params.put("userName",user[2]);
 				params.put("nameKana",user[3]);

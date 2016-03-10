@@ -61,7 +61,7 @@
                                   <a href="/TeraNaviAdmin/policyedit">利用規約</a>
                               </li>
                               <li>
-                                  <a href="/TeraNaviAdmin/adminau">権限</a>
+                                  <a href="/TeraNaviAdmin/adminau">管理者権限</a>
                               </li>
                           </ul>
                       </li>

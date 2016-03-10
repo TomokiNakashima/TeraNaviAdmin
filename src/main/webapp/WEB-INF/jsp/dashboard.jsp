@@ -62,7 +62,7 @@
                                             <a href="/TeraNaviAdmin/policyedit">利用規約</a>
                                         </li>
                                         <li>
-                                            <a href="/TeraNaviAdmin/adminau">権限</a>
+                                            <a href="/TeraNaviAdmin/adminau">管理者権限</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -72,7 +72,7 @@
                                 <li>
                                     <a href="/TeraNaviAdmin/front/contsupplist"><i class="fa fa-envelope fa-3x"></i> お問い合わせ</a>
                                 </li>
-                                <li>
+                                <li style="display: none">
                                     <a href="/TeraNaviAdmin/notice"><i class="fa fa-edit fa-3x"></i> お知らせ </a>
                                 </li>
                             </ul>
@@ -107,7 +107,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-2 col-sm-4 col-xs-4 pull-right">
+								<div style="display: none">     <div class="col-md-2 col-sm-4 col-xs-4 pull-right">
                                     <div class="panel panel-back noti-box">
                                         <span class="icon-box set-icon">
                                             <i class="fa "></i>
@@ -122,7 +122,7 @@
                                     <!-- /. ROW  -->
                                     <hr />
                                 </div>
-                            </div>
+                           
                             <!-- /. ROW  -->
                             <div class="row">
                                 <div class="col-md-5 col-sm-12 col-xs-12">
@@ -217,7 +217,7 @@
                                 </div>
 
                             </div>
-                        </div>
+							</div></div>
                         <!-- /. ROW  -->
                     </div>
                     <!-- /. PAGE INNER  -->
