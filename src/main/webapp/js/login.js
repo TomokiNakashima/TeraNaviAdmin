@@ -1,6 +1,6 @@
 $(function(){
     $("button").on("click",function(){
-        login();
+        loginCheck();
     });
 
 });
@@ -11,7 +11,7 @@ $(document).keydown(function(e) {
 });
 
 
-function login(){
+function login(id,pass){
     ajaxSettings = {
         type:'post',
         url:'/TeraNaviAdmin/front/login',
@@ -21,12 +21,12 @@ function login(){
     };
     ajaxSettings.data = {
         ajax:"true",
-        loginId:$("#loginId").val(),
-        password:$("#password").val()
+        loginId:id,
+        password:pass
     };
 
     ajaxSettings.success = function(data){
-    location.href="/TeraNaviAdmin/dashboard";
+        location.href="/TeraNaviAdmin/dashboard";
     }
 
     ajaxSettings.error = function (XMLHttpRequest, textStatus, errorThrown) {
@@ -42,4 +42,22 @@ function login(){
     },
 
     ajax = $.ajax(ajaxSettings);
+}
+
+function loginCheck(){
+    var id=$("#loginId").val();
+    var pass=$("#password").val();
+    if(id==""||pass==""){
+        if(id==""){
+            $("#loginId").attr("placeholder","アカウントは必須");
+            $("#loginId").css("border-color","#c00");
+        }
+        if(pass==""){
+            $("#password").attr("placeholder","パスワードは必須");
+            $("#password").css("border-color","#c00");
+        }
+		return ;
+   }
+
+    login(id,pass);
 }
