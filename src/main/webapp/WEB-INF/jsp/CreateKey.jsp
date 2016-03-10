@@ -46,7 +46,7 @@ pageEncoding="UTF-8"
     <div class="sidebar-collapse">
         <ul class="nav" id="main-menu">
             <li class="text-center">
-                <img src="${sessionScope.loginUser.iconPath}" class="user-image img-responsive">
+                <img src="${sessionScope.loginUser.iconPath}" style="height:200px;width:200px;" class="user-image img-responsive">
                 </li>
                 <li>
                     <a href="/TeraNaviAdmin/dashboard"><i class="fa fa-dashboard fa-3x"></i> ダッシュボード</a>
@@ -96,7 +96,7 @@ pageEncoding="UTF-8"
             </table>
         </div>
 
-        
+
     </div>
 </div>
     <!-- /. PAGE WRAPPER -->
@@ -116,6 +116,6 @@ pageEncoding="UTF-8"
     <script src="/TeraNaviAdmin/js/assets/js/custom.js"></script>
     <script src="/TeraNaviAdmin/js/key-create.js"></script>
 
-	
-	
+
+
 </body></html>

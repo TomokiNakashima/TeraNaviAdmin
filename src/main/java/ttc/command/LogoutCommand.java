@@ -26,11 +26,6 @@ public class LogoutCommand extends AbstractCommand{
         try{
             RequestContext reqc = getRequestContext();
 
-            MySqlConnectionManager.getInstance().commit();
-            MySqlConnectionManager.getInstance().closeConnection();
-
-
-
 
             resc.setTarget("index");
 
