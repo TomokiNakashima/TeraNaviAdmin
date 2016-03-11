@@ -10,40 +10,6 @@ $(document).keydown(function(e) {
     }
 });
 
-
-function login(id,pass){
-    ajaxSettings = {
-        type:'post',
-        url:'/TeraNaviAdmin/front/login',
-        dataType:'json',
-        data:null
-
-    };
-    ajaxSettings.data = {
-        ajax:"true",
-        adminLoginId:id,
-        password:pass
-    };
-
-    ajaxSettings.success = function(data){
-        location.href="/TeraNaviAdmin/dashboard";
-    };
-
-    ajaxSettings.error = function (XMLHttpRequest, textStatus, errorThrown) {
-        var report;
-        if(XMLHttpRequest.status==500){
-            if(XMLHttpRequest.responseText.indexOf("パスワード")>-1){
-                report="IDまたはパスワードが違います";
-            }else {
-                report="管理者ではありません";
-            }
-        }
-        $("#report").text(report);
-    },
-
-    ajax = $.ajax(ajaxSettings);
-}
-
 function loginCheck(){
     var id=$("#adminLoginId").val();
     var pass=$("#password").val();
@@ -60,4 +26,33 @@ function loginCheck(){
    }
 
     login(id,pass);
+}
+
+function login(id,pass){
+    ajaxSettings = {
+        type:'post',
+        url:'/TeraNaviAdmin/front/login',
+        dataType:'json',
+        data:null
+    };
+    ajaxSettings.data = {
+        ajax:"true",
+        adminLoginId:id,
+        password:pass
+    };
+    ajax = $.ajax(ajaxSettings);
+    ajaxSettings.success = function(data){
+        location.href="/TeraNaviAdmin/dashboard";
+    };
+    ajaxSettings.error = function (XMLHttpRequest, textStatus, errorThrown) {
+        var report;
+        if(XMLHttpRequest.status==500){
+            if(XMLHttpRequest.responseText.indexOf("パスワード")>-1){
+                report="IDまたはパスワードが違います";
+            }else {
+                report="管理者ではありません";
+            }
+        }
+        $("#report").text(report);
+    }
 }

@@ -22,7 +22,7 @@ public class AdminLoginCommand extends AbstractCommand {
     public ResponseContext execute(ResponseContext resc)throws BusinessLogicException{
         try{
             RequestContext reqc = getRequestContext();
-
+            
             String loginId=reqc.getParameter("adminLoginId")[0];
             String password=reqc.getParameter("password")[0];
 
