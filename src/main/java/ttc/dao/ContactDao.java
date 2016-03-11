@@ -38,9 +38,9 @@ public class ContactDao implements AbstractDao{
             cb.setTitle(rs.getString(3));
             cb.setContactBody(rs.getString(4));
             cb.setDate(rs.getString(5));
-            cb.setReadFlag(rs.getString(6));
-            cb.setAddress(rs.getString(7));
-            cb.setCategory(rs.getString(8));
+            cb.setReadFlag(rs.getString(8));
+            cb.setAddress(rs.getString(6));
+            cb.setCategory(rs.getString(7));
 
         }catch(SQLException e){
             throw new IntegrationException(e.getMessage(),e);
