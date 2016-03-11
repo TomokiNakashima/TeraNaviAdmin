@@ -20,7 +20,10 @@
 
 .caption{
     margin-left: 27px;
+}
 
+.caption span,.caption p{
+    white-space: pre;
 }
 
 #printArea{
