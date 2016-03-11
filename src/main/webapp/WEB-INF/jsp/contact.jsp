@@ -123,7 +123,7 @@
                                 <td>${contact.category}</td>
                                 <td>${contact.title}</td>
                                 <td>${contact.date}</td>
-                                <td class="col-md-1 pull-right">
+                                <td class="col-md-1 pullright">
                                     <button type="button" class="btn btn-primary" onclick="read(${contact.id})" style="margin-left:38px">詳細へ</button>
                                 </td>
                             </tr>
