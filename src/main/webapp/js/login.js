@@ -21,13 +21,13 @@ function login(id,pass){
     };
     ajaxSettings.data = {
         ajax:"true",
-        loginId:id,
+        adminLoginId:id,
         password:pass
     };
 
     ajaxSettings.success = function(data){
         location.href="/TeraNaviAdmin/dashboard";
-    }
+    };
 
     ajaxSettings.error = function (XMLHttpRequest, textStatus, errorThrown) {
         var report;
@@ -35,7 +35,7 @@ function login(id,pass){
             if(XMLHttpRequest.responseText.indexOf("パスワード")>-1){
                 report="IDまたはパスワードが違います";
             }else {
-                report="管理者ではありません"
+                report="管理者ではありません";
             }
         }
         $("#report").text(report);
@@ -45,12 +45,12 @@ function login(id,pass){
 }
 
 function loginCheck(){
-    var id=$("#loginId").val();
+    var id=$("#adminLoginId").val();
     var pass=$("#password").val();
     if(id==""||pass==""){
         if(id==""){
-            $("#loginId").attr("placeholder","アカウントは必須");
-            $("#loginId").css("border-color","#c00");
+            $("#adminLoginId").attr("placeholder","アカウントは必須");
+            $("#adminLoginId").css("border-color","#c00");
         }
         if(pass==""){
             $("#password").attr("placeholder","パスワードは必須");

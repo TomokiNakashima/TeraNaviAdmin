@@ -87,7 +87,7 @@
     <div class="login">
     	<h1>Login</h1>
     	<form class="form-group">
-    		<input type="text" id="loginId" placeholder="ユーザー名" required="required" />
+    		<input type="text" id="adminLoginId" placeholder="ユーザー名" required="required" />
             <input type="password" id="password" placeholder="パスワード" required="required" />
             <a href="/TeraNavi/reset" target="_blank" class="pull-right">忘れた</a>
             <div id="report" style="color:#D40A0A;font-size:15px"></div>
