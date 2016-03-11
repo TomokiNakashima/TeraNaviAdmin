@@ -27,8 +27,8 @@ function showCaution(){
                 if(data[i]["cautionUserId"]["userStatus"]==3){
                     buttonData="<p class='Forced_withdrawal'>アカウントを削除しました</p>";
                 }else{
-                    buttonData="<button type='button' id='delete_account"+data[i]["cautionUser"]+"' class='btn btn-primaty Forced_withdrawal'"+
-                                "onclick='deleteUser("+data[i]["cautionUser"]+")'>強制退会</button>";
+                    buttonData="<button type='button' id='delete_account"+data[i]["id"]+"' class='btn btn-primaty Forced_withdrawal'"+
+                                "onclick='deleteUser("+data[i]["cautionUser"]+","+data[i]["id"]+")'>強制退会</button>";
                 }
 				if(data[i]["cautionFlag"]==0){
                     excuteFlag="<option value='0'>新着</option>";

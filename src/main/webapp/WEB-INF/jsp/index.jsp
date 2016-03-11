@@ -91,7 +91,8 @@
             <input type="password" id="password" placeholder="パスワード" required="required" />
             <a href="/TeraNavi/reset" target="_blank" class="pull-right">忘れた</a>
             <div id="report" style="color:#D40A0A;font-size:15px"></div>
-    		<button type="button" class="btn btn-primary btn-large" style="width:100%">ログイン</button>
+    		<button type="button" class="btn btn-primary btn-large" id="login" style="width:100%;z-index:1">ログイン</button>
+			<button type="button" class="btn btn-primary btn-large" id="loging" style="width:100%;display:none" disabled>ログイン 中</button>
     	</form>
     </div>
 </body>

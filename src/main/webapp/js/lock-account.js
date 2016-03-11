@@ -36,7 +36,7 @@ function lockAccount(id){
 }
 
 
-function deleteUser(id){
+function deleteUser(userId,id){
 
     if(window.confirm('このユーザー削除しますか？')){
         ajaxSettings = {
@@ -48,7 +48,7 @@ function deleteUser(id){
         };
         ajaxSettings.data = {
             ajax:"true",
-            target:id,
+            target:userId,
             status:3
         };
 

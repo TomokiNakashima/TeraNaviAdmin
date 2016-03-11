@@ -1,14 +1,15 @@
 $(function(){
-    $("button").on("click",function(){
+    $("#login").on("click",function(){
         loginCheck();
     });
 
 });
-// $(document).keydown(function(e) {
-//     if(e.keyCode==13) {
-//         $("button").click();
-//     }
-// });
+
+$(document).keydown(function(e) {
+    if(e.keyCode==13) {
+        loginCheck();
+    }
+});
 
 function loginCheck(){
     var id=$("#adminLoginId").val();
@@ -24,11 +25,13 @@ function loginCheck(){
         }
 		return ;
    }
-
     login(id,pass);
 }
 
 function login(id,pass){
+	$("#login").css("display","none");
+	$("#loging").css("display","blcok");
+
     ajaxSettings = {
         type:'post',
         url:'/TeraNaviAdmin/front/login',
@@ -43,6 +46,8 @@ function login(id,pass){
     ajaxSettings.success = function(data){
         location.href="/TeraNaviAdmin/dashboard";
     };
+
+
     ajaxSettings.error = function (XMLHttpRequest, textStatus, errorThrown) {
         var report;
         if(XMLHttpRequest.status==500){
@@ -53,6 +58,9 @@ function login(id,pass){
             }
         }
         $("#report").text(report);
-    };
+		$("#login").css("display","block");
+		$("#loging").css("display","none");
+    },
+
     ajax = $.ajax(ajaxSettings);
 }
