@@ -32,7 +32,7 @@ public class ShowCautionCommand extends AbstractCommand{
             AbstractDao dao= fact.getAbstractDao();
 
             List result = dao.readAll(params);
-            if(flag=="true"){
+            if(flag.equals("true")){
                 int r = dao.update(params);
             }
 

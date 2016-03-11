@@ -61,7 +61,7 @@ pageEncoding="UTF-8"
                             <a href="/TeraNaviAdmin/policyedit">利用規約</a>
                         </li>
                         <li>
-                            <a href="/TeraNaviAdmin/adminau">権限</a>
+                            <a href="/TeraNaviAdmin/adminau">管理者権限</a>
                         </li>
                     </ul>
                 </li>
@@ -71,7 +71,7 @@ pageEncoding="UTF-8"
                 <li>
                     <a href="/TeraNaviAdmin/front/contsupplist"><i class="fa fa-envelope fa-3x"></i> お問い合わせ</a>
                 </li>
-                <li>
+                <li style="display: none">
                     <a href="/TeraNaviAdmin/notice"><i class="fa fa-edit fa-3x"></i> お知らせ </a>
                 </li>
             </ul>
