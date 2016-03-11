@@ -9,10 +9,10 @@ function sendMail(){
     ajaxSettings.data = {
         ajax:"true",
         address:"teranavi.info@gmail.com",
-        toAddress:$("#contactReplayAddress").val(),
+        toAddress:$("#contactReplyAddress").val(),
         pass:"#TeraInfomation",
-        title:$("#contactReplayTitle").val(),
-        mess:$("#contactReplayBody").val()
+        title:$("#contactReplyTitle").val(),
+        mess:$("#contactReplyBody").val()
     };
 
     ajaxSettings.success = function(data){
