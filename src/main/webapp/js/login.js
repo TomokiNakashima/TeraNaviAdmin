@@ -4,11 +4,11 @@ $(function(){
     });
 
 });
-$(document).keydown(function(e) {
-    if(e.keyCode==13) {
-        $("button").click();
-    }
-});
+// $(document).keydown(function(e) {
+//     if(e.keyCode==13) {
+//         $("button").click();
+//     }
+// });
 
 function loginCheck(){
     var id=$("#adminLoginId").val();
@@ -40,7 +40,6 @@ function login(id,pass){
         adminLoginId:id,
         password:pass
     };
-    ajax = $.ajax(ajaxSettings);
     ajaxSettings.success = function(data){
         location.href="/TeraNaviAdmin/dashboard";
     };
@@ -54,5 +53,6 @@ function login(id,pass){
             }
         }
         $("#report").text(report);
-    }
+    };
+    ajax = $.ajax(ajaxSettings);
 }
