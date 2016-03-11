@@ -1,17 +1,20 @@
 $(function(){
-    $("button").on("click",function(){
+    $("#login").on("click",function(){
         loginCheck();
     });
 
 });
 $(document).keydown(function(e) {
     if(e.keyCode==13) {
-        $("button").click();
+        loginCheck();
     }
 });
 
 
 function login(id,pass){
+	$("#login").css("display","none");
+	$("#loging").css("display","blcok");
+	
     ajaxSettings = {
         type:'post',
         url:'/TeraNaviAdmin/front/login',
@@ -27,7 +30,7 @@ function login(id,pass){
 
     ajaxSettings.success = function(data){
         location.href="/TeraNaviAdmin/dashboard";
-    }
+    };
 
     ajaxSettings.error = function (XMLHttpRequest, textStatus, errorThrown) {
         var report;
@@ -35,10 +38,12 @@ function login(id,pass){
             if(XMLHttpRequest.responseText.indexOf("パスワード")>-1){
                 report="IDまたはパスワードが違います";
             }else {
-                report="管理者ではありません"
+                report="管理者ではありません";
             }
         }
         $("#report").text(report);
+		$("#login").css("display","block");
+		$("#loging").css("display","none");
     },
 
     ajax = $.ajax(ajaxSettings);
