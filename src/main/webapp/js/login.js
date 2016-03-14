@@ -4,33 +4,49 @@ $(function(){
     });
 
 });
+
 $(document).keydown(function(e) {
     if(e.keyCode==13) {
         loginCheck();
     }
 });
 
+function loginCheck(){
+    var id=$("#adminLoginId").val();
+    var pass=$("#password").val();
+    if(id==""||pass==""){
+        if(id==""){
+            $("#adminLoginId").attr("placeholder","アカウントは必須");
+            $("#adminLoginId").css("border-color","#c00");
+        }
+        if(pass==""){
+            $("#password").attr("placeholder","パスワードは必須");
+            $("#password").css("border-color","#c00");
+        }
+		return ;
+   }
+    login(id,pass);
+}
 
 function login(id,pass){
 	$("#login").css("display","none");
 	$("#loging").css("display","blcok");
-	
+
     ajaxSettings = {
         type:'post',
         url:'/TeraNaviAdmin/front/login',
         dataType:'json',
         data:null
-
     };
     ajaxSettings.data = {
         ajax:"true",
-        loginId:id,
+        adminLoginId:id,
         password:pass
     };
-
     ajaxSettings.success = function(data){
         location.href="/TeraNaviAdmin/dashboard";
     };
+
 
     ajaxSettings.error = function (XMLHttpRequest, textStatus, errorThrown) {
         var report;
@@ -47,22 +63,4 @@ function login(id,pass){
     },
 
     ajax = $.ajax(ajaxSettings);
-}
-
-function loginCheck(){
-    var id=$("#loginId").val();
-    var pass=$("#password").val();
-    if(id==""||pass==""){
-        if(id==""){
-            $("#loginId").attr("placeholder","アカウントは必須");
-            $("#loginId").css("border-color","#c00");
-        }
-        if(pass==""){
-            $("#password").attr("placeholder","パスワードは必須");
-            $("#password").css("border-color","#c00");
-        }
-		return ;
-   }
-
-    login(id,pass);
 }
