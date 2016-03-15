@@ -19,11 +19,11 @@
     <link href="/TeraNaviAdmin/css/assets/css/custom.css" rel="stylesheet">
     <link href="/TeraNaviAdmin/css/adminau.css" rel="stylesheet">
     <!-- GOOGLE FONTS-->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
 </head><body style="overflow:hidden">
 				<%
 				if(session.getAttribute("loginUser")==null){
-					response.sendRedirect("/TeraNaviAdmin/index"); 
+					response.sendRedirect("/TeraNaviAdmin/index");
 				}
 				%>
     <div id="wrapper">
@@ -98,7 +98,7 @@
         <!-- print area -->
         <div class="col-md-8" style="padding:50px;margin-left:15%">
             <div class="row" id="printArea">
-                <img src="http://pic.58pic.com/58pic/11/44/45/35Y58PICeC9.jpg" style="margin-left:15%;">
+                <img src="https://pic.58pic.com/58pic/11/44/45/35Y58PICeC9.jpg" style="margin-left:15%;">
             </div>
         </div>
     </div>
