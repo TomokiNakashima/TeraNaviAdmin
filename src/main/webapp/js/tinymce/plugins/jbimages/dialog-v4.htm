@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+	<title>Upload an image</title>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<!--    <script>
+        var ajaxSettings;
+        var ajax;
+        $(function () {
+
+            ajaxSettings = {
+                type: 'post',
+                url: '/TeraNavi/upload',
+                processData: false,
+                contentType: false,
+                cache: false,
+                dataType: 'json'
+
+            };
+
+        });
+
+        $(function () {
+            //画像追加-------------------------------------------------------------
+
+            $(document).on("change", "#file_input", function () {
+                var file = this.files[0];
+                // ブラウザごとの違いをフォローする
+                window.URL = window.URL || window.webkitURL;
+
+                // Blob URLの作成
+                src = window.URL.createObjectURL(file);
+                $("#headimg").attr("src", src);
+                uploadImage();
+            });
+
+            function uploadImage() {
+                var files = document.getElementById("file_input").files;
+
+                for (var i = 0; i < files.length; i++) {
+                    var f = files[i];
+                    var formData = new FormData();
+                    formData.append("file", f);
+                    ajaxSettings.data = formData;
+                    ajaxSettings.url = "/TeraNavi/upload/article";
+                    ajaxSettings.success = function (data) {
+                        var imageTag = "<img src=\"" + data.result + "\" / style=\"width:50%;\">";
+						top.tinymce.activeEditor.selection.setContent(imageTag);
+                        console.log(imageTag);
+                        
+                    }
+
+                    ajax = $.ajax(ajaxSettings);
+                }
+            }
+
+        });
+
+
+
+    </script>-->
+<script>
+	    $(document).ready(function() {
+        $("#test-upload").fileinput({
+            'showPreview' : false,
+            'allowedFileExtensions' : ['jpg', 'png','gif'],
+            'elErrorContainer': '#errorBlock'
+        });
+	</script>
+	<link href="css/dialog-v4.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<!--	<form class="form-inline">
+	       <input type="file" accept="*.jpg" id="file_input">
+           <button type="button">アップロード</button>
+	</form>-->
+            <form enctype="multipart/form-data">
+                <input id="file-0a" class="file" type="file" multiple data-min-file-count="1">
+                <br>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-default">Reset</button>
+            </form>
+</body>
+</html>

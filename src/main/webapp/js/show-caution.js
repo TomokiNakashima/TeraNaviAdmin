@@ -75,7 +75,9 @@ function showCaution(){
                 "通報時間:"+data[i]["date"]+
                 "</div></div></div></div></div></div></div>"
                 area.append(htmlData);
-                console.log("完了");
+				if(i>=100){
+					break;
+				}
             }
         }
         ajax = $.ajax(ajaxSettings);
