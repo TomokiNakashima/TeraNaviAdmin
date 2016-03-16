@@ -22,6 +22,7 @@
 	    <script src="/TeraNaviAdmin/js/tinymce/tinymce.min.js"></script>
     <script>
 		tinymce.init({
+			language : "ja", 
 			selector: "textarea",theme: "modern",
 			plugins: [
 				 "advlist autolink link image imagetools lists charmap print preview hr anchor pagebreak",
@@ -119,7 +120,7 @@
               <label for="inputText" class="control-label">本文：</label>
             </div>
             <div class="col-sm-8">
-                <textarea class="ckeditor" cols="80" id="editor1" name="body" rows="30"></textarea>
+                <textarea class="ckeditor" cols="80" id="editor1" name="body" rows="20"></textarea>
                
             </div>
 
