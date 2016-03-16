@@ -16,7 +16,7 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>L
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>L
     <script src="/TeraNaviAdmin/js/login.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
@@ -87,10 +87,12 @@
     <div class="login">
     	<h1>Login</h1>
     	<form class="form-group">
-    		<input type="text" id="loginId" placeholder="ユーザー名" required="required" />
+    		<input type="text" id="adminLoginId" placeholder="ユーザー名" required="required" />
             <input type="password" id="password" placeholder="パスワード" required="required" />
+            <a href="/TeraNavi/reset" target="_blank" class="pull-right">忘れた</a>
             <div id="report" style="color:#D40A0A;font-size:15px"></div>
-    		<button type="button" class="btn btn-primary btn-large" style="width:100%">ログイン</button>
+    		<button type="button" class="btn btn-primary btn-large" id="login" style="width:100%;z-index:1">ログイン</button>
+			<button type="button" class="btn btn-primary btn-large" id="loging" style="width:100%;display:none" disabled>ログイン 中</button>
     	</form>
     </div>
 </body>

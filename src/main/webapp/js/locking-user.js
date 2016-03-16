@@ -36,6 +36,9 @@ function loadUserList(){
 			" <div class='pull-right'>"+
 			" <button type='button' class='btn btn-primaty showUserArea_button_release' onclick='lockEnd("+data[i]["id"]+")'>解除</button>"+
 			" </div></div></div></div>");
+				if(i>=100){
+					break;
+				}
 		}
 	}
 	ajax = $.ajax(ajaxSettings);

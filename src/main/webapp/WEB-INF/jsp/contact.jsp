@@ -18,8 +18,16 @@
     <!-- CUSTOM STYLES-->
     <link href="/TeraNaviAdmin/css/assets/css/custom.css" rel="stylesheet">
     <!-- GOOGLE FONTS-->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
-</head><body>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+        <style>
+
+        </style>
+</head><body style="overflow:hidden">
+				<%
+				if(session.getAttribute("loginUser")==null){
+					response.sendRedirect("/TeraNaviAdmin/index");
+				}
+				%>
     <div id="wrapper">
         <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -29,7 +37,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">管理者</a>
+                <a class="navbar-brand">${sessionScope.loginUser.userName}</a>
             </div>
             <div style="color: white;
 
@@ -46,7 +54,7 @@
         <div class="sidebar-collapse">
             <ul class="nav" id="main-menu">
                 <li class="text-center">
-                    <img src="${sessionScope.loginUser.iconPath}" class="user-image img-responsive">
+                    <img src="${sessionScope.loginUser.iconPath}" style="height:200px;width:200px;" class="user-image img-responsive">
                     </li>
                     <li>
                         <a href="/TeraNaviAdmin/dashboard"><i class="fa fa-dashboard fa-3x"></i> ダッシュボード</a>
@@ -61,7 +69,7 @@
                                 <a href="/TeraNaviAdmin/policyedit">利用規約</a>
                             </li>
                             <li>
-                                <a href="/TeraNaviAdmin/adminau">権限</a>
+                                <a href="/TeraNaviAdmin/adminau">管理者権限</a>
                             </li>
                         </ul>
                     </li>
@@ -71,7 +79,7 @@
                     <li>
                         <a href="/TeraNaviAdmin/front/contsupplist" class="active-menu"><i class="fa fa-envelope fa-3x"></i> お問い合わせ</a>
                     </li>
-                    <li>
+                    <li style="display: none">
                         <a href="/TeraNaviAdmin/notice"><i class="fa fa-edit fa-3x"></i> お知らせ </a>
                     </li>
                 </ul>
@@ -82,31 +90,51 @@
             <div id="page-inner">
                 <table class="table table-hover">
                     <caption><h3>お問い合わせ</h3></caption>
-                    <tbody>
-                        <tr>
-                            <th>No</th>
-                            <th>名前</th>
-                            <th>カテゴリ</th>
-                            <th>タイトル</th>
-                            <th>時間</th>
-                            <th>詳細</th>
-                        </tr>
+                    <col style="width: 5%;">
+                    <col style="width: 8%;">
+                    <col style="width: 15%;">
+                    <col style="width: 35%;">
+                    <col style="width: 22%;">
+                    <col style="width: 15%;">
+                    <tr>
+                        <th>No</th>
+                        <th>名前</th>
+                        <th>カテゴリ</th>
+                        <th>タイトル</th>
+                        <th>時間</th>
+                        <th>詳細</th>
+                    </tr>
+                </table>
+                <div id="table_scroll" style="height:700px;overflow-y:scroll">
+                    <table class="table table-hover">
+                        <col style="width: 5%;">
+                        <col style="width: 8%;">
+                        <col style="width: 15%;">
+                        <col style="width: 35%;">
+                        <col style="width: 22%;">
+                        <col style="width: 15%;">
                         <c:forEach var="contact" items="${result}">
-                            <tr id="contactId_${contact.id}">
+                            <c:choose>
+                                <c:when test = "${contact.readFlag == '0'}">
+                                    <tr id="contactId_${contact.id}" style="font-weight:bold">
+                                </c:when>
+                                <c:otherwise>
+                                    <tr id="contactId_${contact.id}">
+                                </c:otherwise>
+                            </c:choose>
+
                                 <td>${contact.id}</td>
                                 <td>${contact.userName}</td>
                                 <td>${contact.category}</td>
                                 <td>${contact.title}</td>
                                 <td>${contact.date}</td>
-                                <td hidden>${contact.contactBody}</td>
-                                <td hidden>${contact.address}</td>
-                                <td class="col-md-1 pull-right">
-                                    <button type="button" class="btn btn-primary" onclick="read(${contact.id})">詳細へ</button>
+                                <td class="col-md-1 pullright">
+                                    <button type="button" class="btn btn-primary" onclick="read(${contact.id})" style="margin-left:38px">詳細へ</button>
                                 </td>
                             </tr>
                         </c:forEach>
-                    </tbody>
                 </table>
+            </div>
 
                 <div id="contact-modal" class="modal fade" aria-hidden="true" style="display: none;">
                     <div class="modal-dialog">
@@ -119,19 +147,19 @@
                                 <form>
                                     <div class="form-group">
                                         <label class="control-label" for="exampleInputName">お名前</label>
-                                        <input class="form-control" id="contactReplayName" name="name" type="text">
+                                        <input class="form-control" id="contactReplyName" name="name" type="text">
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label" for="exampleInputTitle">件名</label>
-                                        <input class="form-control" id="contactReplayTitle" name="title" type="text">
+                                        <input class="form-control" id="contactReplyTitle" name="title" type="text">
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label">メールアドレス</label>
-                                        <input class="form-control" id="contactReplayAddress" type="email" name="address">
+                                        <input class="form-control" id="contactReplyAddress" type="email" name="address">
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label">本文</label>
-                                        <textarea class="form-control" id="contactReplayBody" name="body" rows="6"></textarea>
+                                        <textarea class="form-control" id="contactReplyBody" name="body" rows="6"></textarea>
                                     </div>
                                     <button type="button" id="contactBtn" class="btn btn-default pull-right" onclick="sendMail()">送信する</button>
                                 </form>

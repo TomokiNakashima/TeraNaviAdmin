@@ -19,6 +19,25 @@
     <link href="/TeraNaviAdmin/css/assets/css/custom.css" rel="stylesheet">
     <!-- GOOGLE FONTS-->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+	    <script src="/TeraNaviAdmin/js/tinymce/tinymce.min.js"></script>
+    <script>
+		tinymce.init({
+			language : "ja", 
+			selector: "textarea",theme: "modern",
+			plugins: [
+				 "advlist autolink link image imagetools lists charmap print preview hr anchor pagebreak",
+				 "searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking",
+				 "table contextmenu directionality emoticons paste textcolor responsivefilemanager code"
+		   ],
+		   toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect",
+		   toolbar2: "| link unlink anchor | jbimages | image media | forecolor backcolor  | print preview code ",
+		   relative_urls: false ,
+
+			 // external_filemanager_path:"./filemanager/",
+			  filemanager_title:"jbimages" ,
+			  external_plugins: { "jbimages" : "plugins/jbimages/plugin.min.js"}
+		});
+	</script>
   </head><body>
     <div id="wrapper">
       <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
@@ -29,7 +48,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">管理者</a>
+          <a class="navbar-brand">${sessionScope.loginUser.userName}</a>
         </div>
         <div style="color: white;
 
@@ -38,7 +57,7 @@
             float: right;
 
             font-size: 16px;">Last access : ${sessionScope.loginUser.adminLastLoginDate} &nbsp;
-          <a href="/TeraNavi/front/logout" class="btn btn-danger square-btn-adjust">ログアウト</a>
+          <a href="/TeraNaviAdmin/front/logout" class="btn btn-danger square-btn-adjust">ログアウト</a>
         </div>
       </nav>
       <!-- /. NAV TOP -->
@@ -46,7 +65,7 @@
           <div class="sidebar-collapse">
               <ul class="nav" id="main-menu">
                   <li class="text-center">
-                      <img src="${sessionScope.loginUser.iconPath}" class="user-image img-responsive">
+                      <img src="${sessionScope.loginUser.iconPath}" style="height:200px;width:200px;" class="user-image img-responsive">
                       </li>
                       <li>
                           <a href="/TeraNaviAdmin/dashboard"><i class="fa fa-dashboard fa-3x"></i> ダッシュボード</a>
@@ -61,7 +80,7 @@
                                   <a href="/TeraNaviAdmin/policyedit">利用規約</a>
                               </li>
                               <li>
-                                  <a href="/TeraNaviAdmin/adminau">権限</a>
+                                  <a href="/TeraNaviAdmin/adminau">管理者権限</a>
                               </li>
                           </ul>
                       </li>
@@ -101,8 +120,8 @@
               <label for="inputText" class="control-label">本文：</label>
             </div>
             <div class="col-sm-8">
-                <textarea class="ckeditor" cols="80" id="editor1" name="body" rows="30"></textarea>
-                <script src="/TeraNaviAdmin/ckeditor/ckeditor.js"></script>
+                <textarea class="ckeditor" cols="80" id="editor1" name="body" rows="20"></textarea>
+               
             </div>
 
           </div>

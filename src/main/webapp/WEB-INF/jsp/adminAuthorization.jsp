@@ -17,9 +17,15 @@
     <link href="/TeraNaviAdmin/css/assets/js/morris/morris-0.4.3.min.css" rel="stylesheet">
     <!-- CUSTOM STYLES-->
     <link href="/TeraNaviAdmin/css/assets/css/custom.css" rel="stylesheet">
+    <link href="/TeraNaviAdmin/css/adminau.css" rel="stylesheet">
     <!-- GOOGLE FONTS-->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
-</head><body>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+</head><body style="overflow:hidden">
+				<%
+				if(session.getAttribute("loginUser")==null){
+					response.sendRedirect("/TeraNaviAdmin/index");
+				}
+				%>
     <div id="wrapper">
         <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -29,7 +35,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">管理者</a>
+                <a class="navbar-brand">${sessionScope.loginUser.userName}</a>
             </div>
             <div style="color: white;
 
@@ -38,7 +44,7 @@
             float: right;
 
             font-size: 16px;">Last access : ${sessionScope.loginUser.adminLastLoginDate} &nbsp;
-            <a href="#" class="btn btn-danger square-btn-adjust">ログアウト</a>
+            <a href="/TeraNaviAdmin/front/logout" class="btn btn-danger square-btn-adjust">ログアウト</a>
         </div>
     </nav>
     <!-- /. NAV TOP -->
@@ -46,7 +52,7 @@
         <div class="sidebar-collapse">
             <ul class="nav" id="main-menu">
                 <li class="text-center">
-                    <img src="${sessionScope.loginUser.iconPath}" class="user-image img-responsive">
+                    <img src="${sessionScope.loginUser.iconPath}" style="height:200px;width:200px;" class="user-image img-responsive">
                     </li>
                     <li>
                         <a href="/TeraNaviAdmin/dashboard"><i class="fa fa-dashboard fa-3x"></i> ダッシュボード</a>
@@ -61,7 +67,7 @@
                                 <a href="/TeraNaviAdmin/policyedit">利用規約</a>
                             </li>
                             <li>
-                                <a href="/TeraNaviAdmin/adminau" class="active-menu">権限</a>
+                                <a href="/TeraNaviAdmin/adminau" class="active-menu">管理者権限</a>
                             </li>
                         </ul>
                     </li>
@@ -71,7 +77,7 @@
                     <li>
                         <a href="/TeraNaviAdmin/front/contsupplist"><i class="fa fa-envelope fa-3x"></i> お問い合わせ</a>
                     </li>
-                    <li>
+                    <li style="display: none">
                         <a href="/TeraNaviAdmin/notice"><i class="fa fa-edit fa-3x"></i> お知らせ </a>
                     </li>
                 </ul>
@@ -84,7 +90,7 @@
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="ユーザー名" id="inputUserName">
                 <span class="input-group-btn">
-                    <button class="btn btn-default fa fa-search" type="button" style="height:140%" onclick="search()" id="search_button"></button>
+                    <button class="btn btn-default fa fa-search" type="button" style="height:34px" onclick="search()" id="search_button"></button>
                 </span>
             </div><!-- /input-group -->
         </div><!-- /.col-lg-6 -->
@@ -92,7 +98,7 @@
         <!-- print area -->
         <div class="col-md-8" style="padding:50px;margin-left:15%">
             <div class="row" id="printArea">
-                <img src="http://pic.58pic.com/58pic/11/44/45/35Y58PICeC9.jpg" style="margin-left=32%;">
+                <img src="https://pic.58pic.com/58pic/11/44/45/35Y58PICeC9.jpg" style="margin-left:15%;">
             </div>
         </div>
     </div>

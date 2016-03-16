@@ -1,5 +1,5 @@
 .list{
-    width: 1250px;
+    width: 100%;
 }
 
 .list-2{
@@ -14,6 +14,7 @@
 
 .list-group img{
     height: 100px;
+	width: 100px;
 }
 
 .list_cautionUser{
@@ -26,6 +27,7 @@
 
 .list_user img{
     height: 60px;
+	width: 60px;
 }
 
 .showUserArea_caption{
@@ -49,7 +51,7 @@
 }
 
 .Forced_withdrawal{
-    margin-top: 25%;
+    margin-top: 23px;
 }
 
 .user_name{
@@ -72,6 +74,7 @@
     margin-left: 500px;
     font-size: 20px;
     margin-top: 9px;
+	width: 325px;
 }
 .rock .list-group-item{
     height: 100px;
@@ -95,14 +98,14 @@
 
 #refresh{
     position: absolute;
-    margin-left: 1300px;
+/*    margin-left: 1300px;*/
     margin-top: 5px;
     z-index: 1;
 }
 
 .showUserArea_button_release{
     position: absolute;
-    margin-left: 341px;
+    margin-left: 200px;
     margin-top: -28px;
 }
 

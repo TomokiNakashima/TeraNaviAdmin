@@ -1,6 +1,6 @@
 $(document).keydown(function(e) {
     if(e.keyCode==13) {
-            $("#search_button").click();
+        $("#search_button").click();
     }
 });
 
@@ -23,11 +23,28 @@ function search(){
         if(data[0]==null){
             area.append("<img src='http://static.hdslb.com/mstation/images/video/notfound.png' style='margin-left:19%;'>");
             return;
+        }else{
+            for(var i=0;i<data.length;i++){
+                var nameId="admin";
+                var htmlData;
+
+                htmlData="<div class='col-md-3 card'>"+
+                "<div class='thumbnail'>"+
+                "<span>";
+
+                if(data[i]["adminFlag"]!=1){
+                    nameId="nomal";
+                    htmlData+="<button class='glyphicon glyphicon-plus pull-right' id='"+data[i]["id"]+"'></button>";
+                }
+
+                htmlData+="</span><img src='"+data[i]["iconPath"]+"' alt='Icon' class='img-rounded'>"+
+                "<div class='caption "+nameId+"'>"+
+                "<span>名前："+data[i]["userName"]+"</span>"+
+                "<p>アドレス:"+data[i]["mailAddress"]+"</div></div></div></div>";
+                area.append(htmlData);
+            }
+            eventAdd();
         }
-        for(var i=0;i<data.length;i++){
-            area.append("<div class='col-md-3'><div class='thumbnail'><span><button class='glyphicon glyphicon-plus pull-right' id='"+data[i]["id"]+"' style='color:#F37518'></button></span><img src='"+data[i]["iconPath"]+"' alt='Icon' class='img-rounded' style='height:50px;width:50px;'><div class='caption' style='margin-left:12%'><span>名前："+data[i]["userName"]+"</span><p style='font-size:90%''>アドレス:"+data[i]["mailAddress"]+"</div></div></div></div>");
-        }
-        eventAdd();
     }
 
     ajax = $.ajax(ajaxSettings);
@@ -36,26 +53,33 @@ function search(){
 function eventAdd(){
     $("#printArea button").on("click",function(){
         authorrity(this);
-    })
+    });
 }
 
 
-function authorrity(obj){
-    ajaxSettings = {
-        type:'post',
-        url:'/TeraNaviAdmin/front/acAuth',
-        dataType:'json',
-        data:null
+function authorrity(user){
+    if(window.confirm('このユーザーに管理者権限を与えますか？')){
+        ajaxSettings = {
+            type:'post',
+            url:'/TeraNaviAdmin/front/acAuth',
+            dataType:'json',
+            data:null
 
-    };
-    ajaxSettings.data = {
-        ajax:"true",
-        target:obj.id
-    };
+        };
+        ajaxSettings.data = {
+            ajax:"true",
+            target:user.id
+        };
 
-    ajaxSettings.success = function(data){
-        alert("権限を付けしました");
+        ajaxSettings.success = function(data){
+            alert("権限を付けしました");
+            $("#"+user.id).parent().next().next().addClass("admin");
+            $("#"+user.id).remove();
+        }
+
+        ajax = $.ajax(ajaxSettings);
     }
-
-    ajax = $.ajax(ajaxSettings);
+    else{
+        window.alert('キャンセルされました');
+    }
 }

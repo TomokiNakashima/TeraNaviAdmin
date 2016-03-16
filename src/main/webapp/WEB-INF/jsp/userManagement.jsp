@@ -23,7 +23,12 @@ pageEncoding="UTF-8"
     <link rel="stylesheet" type="text/css" href="/TeraNaviAdmin/css/default.css">
     <link href="/TeraNaviAdmin/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
     <link href="/TeraNaviAdmin/css/custom.css" media="all" rel="stylesheet" type="text/css" />
-</head><body>
+</head><body style="overflow:hidden">
+				<%
+				if(session.getAttribute("loginUser")==null){
+					response.sendRedirect("/TeraNaviAdmin/index"); 
+				}
+				%>
     <div id="wrapper">
             <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
                 <div class="navbar-header">
@@ -42,7 +47,7 @@ pageEncoding="UTF-8"
                 float: right;
 
                 font-size: 16px;">Last access : ${sessionScope.loginUser.adminLastLoginDate} &nbsp;
-                <a href="/TeraNavi/front/logout" class="btn btn-danger square-btn-adjust">ログアウト</a>
+                <a href="/TeraNaviAdmin/front/logout" class="btn btn-danger square-btn-adjust">ログアウト</a>
             </div>
         </nav>
         <!-- /. NAV TOP -->
@@ -50,7 +55,7 @@ pageEncoding="UTF-8"
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li class="text-center">
-                        <img src="${sessionScope.loginUser.iconPath}" class="user-image img-responsive">
+                        <img src="${sessionScope.loginUser.iconPath}" style="height:200px;width:200px;" class="user-image img-responsive">
                     </li>
                     <li>
                         <a href="/TeraNaviAdmin/dashboard"><i class="fa fa-dashboard fa-3x"></i> ダッシュボード</a>
@@ -65,7 +70,7 @@ pageEncoding="UTF-8"
                                 <a href="/TeraNaviAdmin/policyedit">利用規約</a>
                             </li>
                             <li>
-                                <a href="/TeraNaviAdmin/adminau">権限</a>
+                                <a href="/TeraNaviAdmin/adminau">管理者権限</a>
                             </li>
                         </ul>
                     </li>
@@ -75,7 +80,7 @@ pageEncoding="UTF-8"
                     <li>
                         <a href="/TeraNaviAdmin/front/contsupplist"><i class="fa fa-envelope fa-3x"></i> お問い合わせ</a>
                     </li>
-                    <li>
+                    <li style="display: none">
                         <a href="/TeraNaviAdmin/notice"><i class="fa fa-edit fa-3x"></i> お知らせ </a>
                     </li>
                 </ul>
@@ -144,19 +149,19 @@ pageEncoding="UTF-8"
                         </div> --%>
                         <div class="form-group">
                             <label class="control-label" for="Title">タイトル</label>
-                            <input class="form-control" id="cautionTitle" name="title" type="text">
+                            <input class="form-control" id="cautionTitle" name="title" type="text" readonly>
                         </div>
                         <div class="form-group">
                             <label class="control-label">被通報者</label>
-                            <input class="form-control" id="cautionUser" type="email" name="address">
+                            <input class="form-control" id="cautionUser" type="email" name="address" readonly>
                         </div>
                         <div class="form-group">
                             <label class="control-label">通報者</label>
-                            <input class="form-control" id="user" type="email" name="address">
+                            <input class="form-control" id="user" type="email" name="address" readonly>
                         </div>
                         <div class="form-group">
                             <label class="control-label">通報文</label>
-                            <textarea class="form-control" id="cautionBody" name="body"></textarea>
+                            <textarea class="form-control" id="cautionBody" name="body" readonly></textarea>
                         </div>
                         <button type="button" id="cautionBtn" class="btn btn-default pull-right">警告する</button>
                     </form>

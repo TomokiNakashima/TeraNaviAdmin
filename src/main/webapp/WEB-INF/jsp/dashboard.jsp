@@ -24,6 +24,11 @@
             <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
         </head>
         <body>
+			<%
+				if(session.getAttribute("loginUser")==null){
+					response.sendRedirect("/TeraNaviAdmin/index"); 
+				}
+				%>
             <div id="wrapper">
                 <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
                     <div class="navbar-header">
@@ -33,13 +38,13 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="index.html">管理者</a>
+                        <a class="navbar-brand">${sessionScope.loginUser.userName}</a>
                     </div>
                     <div style="color: white;
                         padding: 15px 50px 5px 50px;
                         float: right;
                         font-size: 16px;">Last access : <span id="lastTime">${sessionScope.loginUser.adminLastLoginDate}</span> &nbsp;
-                        <a href="/TeraNavi/front/logout" class="btn btn-danger square-btn-adjust">ログアウト</a>
+                        <a href="/TeraNaviAdmin/front/logout" class="btn btn-danger square-btn-adjust">ログアウト</a>
                     </div>
                 </nav>
                 <!-- /. NAV TOP -->
@@ -47,7 +52,7 @@
                     <div class="sidebar-collapse">
                         <ul class="nav" id="main-menu">
                             <li class="text-center">
-                                <img src="${sessionScope.loginUser.iconPath}" class="user-image img-responsive">
+                                <img src="${sessionScope.loginUser.iconPath}" style="height:200px;width:200px;" class="user-image img-responsive">
                                 </li>
                                 <li>
                                     <a href="/TeraNaviAdmin/dashboard" class="active-menu"><i class="fa fa-dashboard fa-3x"></i> ダッシュボード</a>
@@ -62,7 +67,7 @@
                                             <a href="/TeraNaviAdmin/policyedit">利用規約</a>
                                         </li>
                                         <li>
-                                            <a href="/TeraNaviAdmin/adminau">権限</a>
+                                            <a href="/TeraNaviAdmin/adminau">管理者権限</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -72,7 +77,7 @@
                                 <li>
                                     <a href="/TeraNaviAdmin/front/contsupplist"><i class="fa fa-envelope fa-3x"></i> お問い合わせ</a>
                                 </li>
-                                <li>
+                                <li style="display: none">
                                     <a href="/TeraNaviAdmin/notice"><i class="fa fa-edit fa-3x"></i> お知らせ </a>
                                 </li>
                             </ul>
@@ -107,7 +112,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-2 col-sm-4 col-xs-4 pull-right">
+								<div style="display: none">     <div class="col-md-2 col-sm-4 col-xs-4 pull-right">
                                     <div class="panel panel-back noti-box">
                                         <span class="icon-box set-icon">
                                             <i class="fa "></i>
@@ -122,7 +127,7 @@
                                     <!-- /. ROW  -->
                                     <hr />
                                 </div>
-                            </div>
+                           
                             <!-- /. ROW  -->
                             <div class="row">
                                 <div class="col-md-5 col-sm-12 col-xs-12">
@@ -217,7 +222,7 @@
                                 </div>
 
                             </div>
-                        </div>
+							</div></div>
                         <!-- /. ROW  -->
                     </div>
                     <!-- /. PAGE INNER  -->

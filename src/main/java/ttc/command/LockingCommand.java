@@ -24,7 +24,7 @@ public class LockingCommand extends AbstractCommand{
 
             Map params = new HashMap();
             params.put("userStatus",userStatus);
-            params.put("where","where user_status_flag>0 and user_status_flag<?");
+            params.put("where","where user_status_flag>0 and user_status_flag<? order by user_lock_start_date desc");
 
             MySqlConnectionManager.getInstance().beginTransaction();
 

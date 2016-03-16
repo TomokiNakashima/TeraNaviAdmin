@@ -7,6 +7,7 @@ public class ContactBean implements Bean{
     private String contactBody;
     private String date;
     private String address;
+    private String readFlag;
     private String category;
 
 
@@ -88,6 +89,22 @@ public class ContactBean implements Bean{
     */
     public void setDate(String date) {
     	this.date = date;
+    }
+
+    /**
+    * Returns value of readFlag
+    * @return
+    */
+    public String getReadFlag() {
+    	return readFlag;
+    }
+
+    /**
+    * Sets new value of readFlag
+    * @param
+    */
+    public void setReadFlag(String readFlag) {
+    	this.readFlag = readFlag;
     }
 
     /**

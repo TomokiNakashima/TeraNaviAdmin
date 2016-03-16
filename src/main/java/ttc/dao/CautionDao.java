@@ -37,7 +37,7 @@ public class CautionDao implements AbstractDao{
             StringBuffer sql = new StringBuffer();
 
             sql.append("select * ");
-            sql.append("from cautions ");
+            sql.append("from cautions order by caution_id desc");
 
             pst = cn.prepareStatement(new String(sql));
 
@@ -63,6 +63,7 @@ public class CautionDao implements AbstractDao{
                 bean.setTitle(rs.getString(5));
                 bean.setCautionBody(rs.getString(6));
                 bean.setReportPageUrl(rs.getString(7));
+                bean.setCautionFlag(rs.getString(8));
 
                 String userId = rs.getString(2);
                 String cautionUser = rs.getString(3);
@@ -118,7 +119,31 @@ public class CautionDao implements AbstractDao{
     }
 
     public int update(Map map)throws IntegrationException{
-        return 0;
+            int result=0;
+            try{
+                Connection cn = MySqlConnectionManager.getInstance().getConnection();
+                StringBuffer sql = new StringBuffer();
+                sql.append("update cautions set caution_flag=1");
+
+                pst = cn.prepareStatement(new String(sql));
+                result = pst.executeUpdate();
+
+                System.out.println("\t処理件数 : "+result);
+
+            }catch(SQLException e){
+                MySqlConnectionManager.getInstance().rollback();
+                throw new IntegrationException(e.getMessage(),e);
+            }finally{
+                try{
+                    if(pst!=null){
+                        pst.close();
+                    }
+                }catch(SQLException e){
+                    throw new IntegrationException(e.getMessage(),e);
+                }
+            }
+
+            return result;
 
     }
 

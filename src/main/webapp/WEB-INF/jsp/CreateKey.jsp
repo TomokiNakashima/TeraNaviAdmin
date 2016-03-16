@@ -20,6 +20,11 @@ pageEncoding="UTF-8"
     <!-- GOOGLE FONTS-->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
 </head><body>
+				<%
+				if(session.getAttribute("loginUser")==null){
+					response.sendRedirect("/TeraNaviAdmin/index"); 
+				}
+				%>
     <div id="wrapper">
         <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -29,7 +34,7 @@ pageEncoding="UTF-8"
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">管理者</a>
+                <a class="navbar-brand">${sessionScope.loginUser.userName}</a>
             </div>
             <div style="color: white;
 
@@ -38,7 +43,7 @@ pageEncoding="UTF-8"
             float: right;
 
             font-size: 16px;">Last access : ${sessionScope.loginUser.adminLastLoginDate} &nbsp;
-            <a href="#" class="btn btn-danger square-btn-adjust">ログアウト</a>
+            <a href="/TeraNaviAdmin/front/logout" class="btn btn-danger square-btn-adjust">ログアウト</a>
         </div>
     </nav>
     <!-- /. NAV TOP -->
@@ -46,7 +51,7 @@ pageEncoding="UTF-8"
     <div class="sidebar-collapse">
         <ul class="nav" id="main-menu">
             <li class="text-center">
-                <img src="${sessionScope.loginUser.iconPath}" class="user-image img-responsive">
+                <img src="${sessionScope.loginUser.iconPath}" style="height:200px;width:200px;" class="user-image img-responsive">
                 </li>
                 <li>
                     <a href="/TeraNaviAdmin/dashboard"><i class="fa fa-dashboard fa-3x"></i> ダッシュボード</a>
@@ -61,7 +66,7 @@ pageEncoding="UTF-8"
                             <a href="/TeraNaviAdmin/policyedit">利用規約</a>
                         </li>
                         <li>
-                            <a href="/TeraNaviAdmin/adminau">権限</a>
+                            <a href="/TeraNaviAdmin/adminau">管理者権限</a>
                         </li>
                     </ul>
                 </li>
@@ -71,7 +76,7 @@ pageEncoding="UTF-8"
                 <li>
                     <a href="/TeraNaviAdmin/front/contsupplist"><i class="fa fa-envelope fa-3x"></i> お問い合わせ</a>
                 </li>
-                <li>
+                <li style="display: none">
                     <a href="/TeraNaviAdmin/notice"><i class="fa fa-edit fa-3x"></i> お知らせ </a>
                 </li>
             </ul>
@@ -81,10 +86,10 @@ pageEncoding="UTF-8"
 <div id="page-wrapper">
         <div id="page-inner">
     <h1 class="text-center text-warning" style="font-size:85px;">登録キー発行</h1>
-    <form class="form-inline col-md-offset-5" style="padding:50px;">
+    <form class="form-inline col-md-offset-4" style="padding:50px;">
         <div class="form-group">
-            <input type="text" class="form-control" name="count" id="create_count">
-            </div>
+            有効期限(日) <input type="number" class="form-control" name="count" id="create_count">
+        </div>
             <div class="form-group">
                 <button type="button" class="btn btn-primary" name="発行" onclick="keyResult('writeKeyCreate')">発行</button>
             </div>
@@ -92,14 +97,11 @@ pageEncoding="UTF-8"
         <div class="table">
             <table class="table table-striped" id="create_table">
                 <caption><h3>発行された登録キー一覧</h3></caption>
-                <tr><th>番号</th><th>キー</th><th>status</th></tr>
+                <tr><th>番号</th><th>キー</th><th>有効期限</th></tr>
             </table>
         </div>
 
-        <button type="button" class="btn btn-primary" onclick="document.form1.submit();">この登録キーをファイルに出力</button>
-    <form action="/TeraNaviAdmin/Download" name="form1">
-        <input type="hidden" value="" id="file" name="fileName">
-    </form>
+
     </div>
 </div>
     <!-- /. PAGE WRAPPER -->
@@ -118,5 +120,7 @@ pageEncoding="UTF-8"
     <!-- CUSTOM SCRIPTS -->
     <script src="/TeraNaviAdmin/js/assets/js/custom.js"></script>
     <script src="/TeraNaviAdmin/js/key-create.js"></script>
+
+
 
 </body></html>

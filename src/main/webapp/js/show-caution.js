@@ -14,11 +14,12 @@ function showCaution(){
         };
         ajaxSettings.data = {
             ajax:"true",
+            flag:"true"
         };
 
         ajaxSettings.success = function(data){
             outerData=data;
-            var htmlData,buttonData;
+            var htmlData,buttonData,excuteFlag;
             var area=$("#showUserArea_report");
 
             area.empty();
@@ -26,10 +27,13 @@ function showCaution(){
                 if(data[i]["cautionUserId"]["userStatus"]==3){
                     buttonData="<p class='Forced_withdrawal'>アカウントを削除しました</p>";
                 }else{
-                    buttonData="<button type='button' id='delete_account' class='btn btn-primaty Forced_withdrawal'"+
-                                "onclick='deleteUser("+data[i]["cautionUser"]+")'>強制退会</button>";
+                    buttonData="<button type='button' id='delete_account"+data[i]["id"]+"' class='btn btn-primaty Forced_withdrawal'"+
+                                "onclick='deleteUser("+data[i]["cautionUser"]+","+data[i]["id"]+")'>強制退会</button>";
                 }
-                htmlData="<div class='col-md-10 list'>"+
+				if(data[i]["cautionFlag"]==0){
+                    excuteFlag="<option value='0'>新着</option>";
+                }
+				htmlData="<div class='col-md-10 list'>"+
                 "<div class='list-group'>"+
                 "<div class='list-group-item list_cautionUser'>"+
                 "<div class='col-cm-2 pull-left'>"+
@@ -39,16 +43,17 @@ function showCaution(){
                 "<div class='pull-left'>"+
                 "<div class='caution_user_name'>"+data[i]["cautionUserId"]["userName"]+"</div><br>"+
                 "<div class='caution_page_url'>"+
-                "URL:<a href='"+data[i]["reportPageUrl"]+"' target='_blank'>"+data[i]["reportPageUrl"]+"</a>"+
+                "URL:<a href='"+data[i]["reportPageUrl"]+"' target='_blank'>通報されたページ</a>"+
                 "</div>"+
                 "</div>"+
                 "<div class='center-block operate_area'>"+
-                "<button type='button' class='btn btn-warning caution_button' onclick='caution("+data[i]["id"]+")'>警告</button>"+
+                "<button type='button' class='btn btn-warning caution_button' onclick='caution("+data[i]["id"]+")'>通報内容</button>"+
                 "<select class='form-control lock_select' id='lock_select"+data[i]["cautionUser"]+"' onchange='lockAccount("+data[i]["cautionUser"]+")'>"+
-                "<option value='0'>ロック</option>"+
+                excuteFlag+
+				"<option value='0'>ロック</option>"+
                 "<option value='24'>24時間</option>"+
                 "<option value='48'>48時間</option>"+
-                "<option value='9999'>無期限</option>"+
+                "<option value='9999999'>無期限</option>"+
                 "</select>"+
                 "</div>"+
                 "<div class='pull-right'>"+buttonData+
@@ -70,7 +75,9 @@ function showCaution(){
                 "通報時間:"+data[i]["date"]+
                 "</div></div></div></div></div></div></div>"
                 area.append(htmlData);
-                console.log("完了");
+				if(i>=100){
+					break;
+				}
             }
         }
         ajax = $.ajax(ajaxSettings);

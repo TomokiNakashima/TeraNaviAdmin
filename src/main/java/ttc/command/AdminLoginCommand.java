@@ -22,8 +22,8 @@ public class AdminLoginCommand extends AbstractCommand {
     public ResponseContext execute(ResponseContext resc)throws BusinessLogicException{
         try{
             RequestContext reqc = getRequestContext();
-
-            String loginId=reqc.getParameter("loginId")[0];
+            
+            String loginId=reqc.getParameter("adminLoginId")[0];
             String password=reqc.getParameter("password")[0];
 
 			password = PasswordSaffer.getStretchedPassword(password, loginId);
@@ -31,12 +31,13 @@ public class AdminLoginCommand extends AbstractCommand {
             Map params = new HashMap();
             params.put("value",loginId);
             params.put("where","where login_id=?");
-
+            params.put("lastLoginDate","current_timestamp");
 
             MySqlConnectionManager.getInstance().beginTransaction();
             AbstractDaoFactory factory = AbstractDaoFactory.getFactory("users");
             AbstractDao dao = factory.getAbstractDao();
             UserBean ub = (UserBean)dao.read(params);
+            int r = dao.update(params);
 
             MySqlConnectionManager.getInstance().commit();
             MySqlConnectionManager.getInstance().closeConnection();

@@ -38,6 +38,7 @@ public class ContactDao implements AbstractDao{
             cb.setTitle(rs.getString(3));
             cb.setContactBody(rs.getString(4));
             cb.setDate(rs.getString(5));
+            cb.setReadFlag(rs.getString(8));
             cb.setAddress(rs.getString(6));
             cb.setCategory(rs.getString(7));
 
@@ -57,7 +58,33 @@ public class ContactDao implements AbstractDao{
     }
 
     public int update(Map map)throws IntegrationException{
-        return 0;
+    PreparedStatement pst=null;
+        int result=0;
+        try{
+            Connection cn = MySqlConnectionManager.getInstance().getConnection();
+            StringBuffer sql = new StringBuffer();
+            sql.append("update contacts set read_flag=1 where contact_id=?");
+
+            pst = cn.prepareStatement(new String(sql));
+            pst.setString(1,(String)map.get("conId"));
+            result = pst.executeUpdate();
+
+            System.out.println("\t処理件数 : "+result);
+
+        }catch(SQLException e){
+            MySqlConnectionManager.getInstance().rollback();
+            throw new IntegrationException(e.getMessage(),e);
+        }finally{
+            try{
+                if(pst!=null){
+                    pst.close();
+                }
+            }catch(SQLException e){
+                throw new IntegrationException(e.getMessage(),e);
+            }
+        }
+
+        return result;
     }
 
     public int insert(Map map)throws IntegrationException{
@@ -101,8 +128,8 @@ public class ContactDao implements AbstractDao{
             cn = MySqlConnectionManager.getInstance().getConnection();
             StringBuffer sql = new StringBuffer();
             sql.append("select contact_id,contact_user_name,contact_title,contact_body,");
-            sql.append("contact_date,contact_address,contact_category ");
-            sql.append("from contacts");
+            sql.append("contact_date,read_flag,contact_address,contact_category ");
+            sql.append("from contacts order by contact_date desc");
 
             pst = cn.prepareStatement(new String(sql));
 
@@ -115,8 +142,9 @@ public class ContactDao implements AbstractDao{
                 con.setTitle(rs.getString(3));
                 con.setContactBody(rs.getString(4));
                 con.setDate(rs.getString(5));
-                con.setAddress(rs.getString(6));
-                con.setCategory(rs.getString(7));
+                con.setReadFlag(rs.getString(6));
+                con.setAddress(rs.getString(7));
+                con.setCategory(rs.getString(8));
                 result.add(con);
             }
 

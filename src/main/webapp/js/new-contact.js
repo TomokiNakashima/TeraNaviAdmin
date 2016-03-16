@@ -10,10 +10,9 @@ function newContact(){
         dataType:'json',
         data:null,
         success:function(data){
-            var lastTime=$("#lastTime").text();
             var count=0;
             for(var i=0;i<data.length;i++){
-                if(lastTime<data[i]["date"]){
+                if(data[i]["readFlag"]=='0'){
                     count++;
                 }
             }
@@ -35,19 +34,18 @@ function newReport(){
         dataType:'json',
         data:null,
         success:function(data){
-            var lastTime=$("#lastTime").text();
             var count=0;
             for(var i=0;i<data.length;i++){
-                if(lastTime<data[i]["date"]){
+                if(data[i]["cautionFlag"]=='0'){
                     count++;
                 }
             }
             $("#new_report").text(count+" 通");
-            console.log(count);
         }
     }
     ajaxSettings.data = {
         ajax:"true",
+        flag:"false"
     }
 
     ajax = $.ajax(ajaxSettings);

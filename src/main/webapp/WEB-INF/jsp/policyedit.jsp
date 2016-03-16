@@ -19,7 +19,37 @@ pageEncoding="UTF-8"
     <link href="/TeraNaviAdmin/css/assets/css/custom.css" rel="stylesheet">
     <!-- GOOGLE FONTS-->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
-</head><body>
+	<style>
+		iframe{
+			height: 404px;
+		}
+	</style>
+		    <script src="/TeraNaviAdmin/js/tinymce/tinymce.min.js"></script>
+    <script>
+		tinymce.init({
+			mode:"textareas",
+			language : "ja", 
+			selector: "textarea",theme: "modern",
+			plugins: [
+				 "advlist autolink link image imagetools lists charmap print preview hr anchor pagebreak",
+				 "searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking",
+				 "table contextmenu directionality emoticons paste textcolor responsivefilemanager code"
+		   ],
+		   toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect",
+		   toolbar2: "| link unlink anchor | jbimages | image media | forecolor backcolor  | print preview code ",
+		   relative_urls: false ,
+
+			 // external_filemanager_path:"./filemanager/",
+			  filemanager_title:"jbimages" ,
+			  external_plugins: { "jbimages" : "plugins/jbimages/plugin.min.js"}
+		});
+	</script>
+</head><body style="overflow:hidden">
+				<%
+				if(session.getAttribute("loginUser")==null){
+					response.sendRedirect("/TeraNaviAdmin/index"); 
+				}
+				%>
     <div id="wrapper">
         <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
                 <div class="navbar-header">
@@ -29,7 +59,7 @@ pageEncoding="UTF-8"
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">管理者</a>
+                    <a class="navbar-brand">${sessionScope.loginUser.userName}</a>
                 </div>
                 <div style="color: white;
 
@@ -38,7 +68,7 @@ pageEncoding="UTF-8"
                 float: right;
 
                 font-size: 16px;">Last access : ${sessionScope.loginUser.adminLastLoginDate} &nbsp;
-                <a href="#" class="btn btn-danger square-btn-adjust">ログアウト</a>
+                <a href="/TeraNaviAdmin/front/logout" class="btn btn-danger square-btn-adjust">ログアウト</a>
             </div>
         </nav>
         <!-- /. NAV TOP -->
@@ -46,7 +76,7 @@ pageEncoding="UTF-8"
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li class="text-center">
-                        <img src="${sessionScope.loginUser.iconPath}" class="user-image img-responsive">
+                        <img src="${sessionScope.loginUser.iconPath}" style="height:200px;width:200px;" class="user-image img-responsive">
                     </li>
                     <li>
                         <a href="/TeraNaviAdmin/dashboard"><i class="fa fa-dashboard fa-3x"></i> ダッシュボード</a>
@@ -61,7 +91,7 @@ pageEncoding="UTF-8"
                                 <a href="/TeraNaviAdmin/policyedit" class="active-menu">利用規約</a>
                             </li>
                             <li>
-                                <a href="/TeraNaviAdmin/adminau">権限</a>
+                                <a href="/TeraNaviAdmin/adminau">管理者権限</a>
                             </li>
                         </ul>
                     </li>
@@ -71,7 +101,7 @@ pageEncoding="UTF-8"
                     <li>
                         <a href="/TeraNaviAdmin/front/contsupplist"><i class="fa fa-envelope fa-3x"></i> お問い合わせ</a>
                     </li>
-                    <li>
+                    <li style="display: none">
                         <a href="/TeraNaviAdmin/notice"><i class="fa fa-edit fa-3x"></i> お知らせ </a>
                     </li>
                 </ul>
@@ -103,8 +133,7 @@ pageEncoding="UTF-8"
                         </div>
                         <form class="form-horizontalx">
                             <div class="form-group col-sm-8 col-md-offset-2" id="policy_area">
-                                <textarea class="ckeditor" cols="80" id="editorpolicy" name="policy" rows="40"></textarea>
-                                <script src="ckeditor/ckeditor.js"></script>
+                                <textarea cols="80" class="policyArea" id="editorpolicy" name="policy" rows="20"></textarea>
                             </div>
                             <div class="form-group col-md-4 col-md-offset-2">
                                 <button type="button" class="btn btn-primary" onclick="sendPolicy()">改訂版を確認</button>
@@ -117,8 +146,7 @@ pageEncoding="UTF-8"
                         </div>
                         <form class="form-horizontalx">
                             <div class="form-group col-sm-8 col-md-offset-2" id="term_area">
-                                <textarea class="ckeditor" cols="80" id="editorrule" name="rule" rows="40"></textarea>
-                                <script src="ckeditor/ckeditor.js"></script>
+                                <textarea cols="80" class="termArea" id="editorrule" name="rule" rows="80" style="height:404px;"></textarea>
                             </div>
                             <div class="form-group col-md-4 col-md-offset-2">
                                 <button type="button" class="btn btn-primary" onclick="sendRule()">改訂版を確認</button>

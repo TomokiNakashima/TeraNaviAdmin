@@ -76,8 +76,8 @@ public class UsersDao implements AbstractDao{
                 ub.setLastLoginDate(rs.getString(17));
                 ub.setAdminLastLoginDate(rs.getString(18));
                 ub.setUserStatus(rs.getString(19));
-                ub.setLockEndDate(rs.getString(20));
-                ub.setLockStartDate(rs.getString(21));
+                ub.setLockStartDate(rs.getString(20));
+                ub.setLockEndDate(rs.getString(21));
                 // ub.setBlogExplanation(rs.getString(22));
                 ub.setProfile(rs.getString(23));
                 list.add(ub);
@@ -99,98 +99,90 @@ public class UsersDao implements AbstractDao{
 
     public int update(Map map)throws IntegrationException{
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        ArrayList sqlList = new ArrayList();
         int result=0;
         try{
             UserBean ub=(UserBean)map.get("userbean");
             Connection cn = MySqlConnectionManager.getInstance().getConnection();
             StringBuffer sql = new StringBuffer();
-            sql.append("update users set user_name=?,user_name_kana=?,sex_visible_flag=?,");
-            sql.append("mail_address=?,password=?,user_header_path=?,user_icon_path=?,");
-            sql.append("last_login_date=?,user_status_flag=?,user_lock_start_date=?,user_lock_end_date=?,");
-            sql.append("user_profile=?,admin_flag=? where user_id=?");
-            pst = cn.prepareStatement(new String(sql));
+            sql.append("update users set ");
+
 
             //ユーザーの名前を変更
             if(map.containsKey("userName")){
-                pst.setString(1,(String)map.get("userName"));
-            }else{
-                pst.setString(1,ub.getUserName());
+                sql.append("user_name=?, ");
+                sqlList.add(map.get("userName"));
             }
             //ユーザーの名前（カナ）を変更
             if(map.containsKey("userNameKana")){
-                pst.setString(2,(String)map.get("userNameKana"));
-            }else{
-                pst.setString(2,ub.getNameKana());
+                sql.append("user_name_kana=?, ");
+                sqlList.add(map.get("userNameKana"));
             }
             //性別の表示設定を変更
             if(map.containsKey("SexVisibleFlag")){
-                pst.setString(3,(String)map.get("SexVisibleFlag"));
-            }else{
-                pst.setString(3,ub.getSexVisibleFlag());
+                sql.append("sex_visible_flag=?, ");
+                sqlList.add(map.get("SexVisibleFlag"));
             }
             //メールアドレスの変更
             if(map.containsKey("mailAddress")){
-                pst.setString(4,(String)map.get("mailAddress"));
-            }else{
-                pst.setString(4,ub.getMailAddress());
+                sql.append("mail_address=?, ");
+                sqlList.add(map.get("mailAddress"));
             }
             //パスワードの変更
             if(map.containsKey("password")){
-                pst.setString(5,(String)map.get("password"));
-            }else{
-                pst.setString(5,ub.getPassword());
+                sql.append("password=?, ");
+                sqlList.add(map.get("password"));
             }
             //ユーザーのヘッダー画像のパスを変更
             if(map.containsKey("headerPath")){
-                pst.setString(6,(String)map.get("headerPath"));
-            }else{
-                pst.setString(6,ub.getHeaderPath());
+                sql.append("user_header_path=?, ");
+                sqlList.add(map.get("headerPath"));
             }
             //ユーザーのアイコン画像パスを変更
             if(map.containsKey("iconPath")){
-                pst.setString(7,(String)map.get("iconPath"));
-            }else{
-                pst.setString(7,ub.getIconPath());
-            }
+                sql.append("user_icon_path=?, ");
+                sqlList.add(map.get("iconPath"));
+            }else
             //ユーザーが最後にログインした日を変更
             if(map.containsKey("lastLoginDate")){
-                pst.setString(8,(String)map.get("lastLoginDate"));
-            }else{
-                pst.setString(8,ub.getLastLoginDate());
+                sql.append("admin_last_login_date=current_timestamp, ");
             }
             //ユーザーステータスを変更
             if(map.containsKey("userStatus")){
-                pst.setString(9,(String)map.get("userStatus"));
-            }else{
-                pst.setString(9,ub.getUserStatus());
+                sql.append("user_status_flag=?, ");
+                sqlList.add(map.get("userStatus"));
             }
             //ユーザのロック開始の日にちを変更
             if(map.containsKey("lockStartDate")){
-                pst.setString(10,(String)map.get("lockStartDate"));
-            }else{
-                pst.setString(10,ub.getLockStartDate());
+                sql.append("user_lock_start_date=?, ");
+                sqlList.add(map.get("lockStartDate"));
             }
             //ユーザのロック終了日を変更
             if(map.containsKey("lockEndDate")){
-                pst.setString(11,(String)map.get("lockEndDate"));
-            }else{
-                pst.setString(11,(String)ub.getLockEndDate());
+                sql.append("user_lock_end_date=?, ");
+                sqlList.add(map.get("lockEndDate"));
             }
             //ユーザの自己紹介を変更
             if(map.containsKey("profile")){
-                pst.setString(12,(String)map.get("profile"));
-            }else{
-                pst.setString(12,ub.getProfile());
+                sql.append("user_profile=?, ");
+                sqlList.add(map.get("profile"));
             }
             //管理者権限の変更
             if(map.containsKey("adminFlag")){
-                pst.setString(13,(String)map.get("adminFlag"));
-            }else{
-                pst.setString(13,ub.getAdminFlag());
+                sql.append("admin_flag=?, ");
+                sqlList.add(map.get("adminFlag"));
             }
+            sql.deleteCharAt(sql.lastIndexOf(","));
 
-
-            pst.setInt(14,Integer.parseInt((String)map.get("userId")));
+            //WHERE
+            if(map.containsKey("where")){
+                sql.append(map.get("where"));
+                sqlList.add(map.get("value"));
+            }
+            pst = cn.prepareStatement(new String(sql));
+            for(int i=0;i<sqlList.size();i++){
+                pst.setString(i+1,(String)sqlList.get(i));
+            }
 
 
             result = pst.executeUpdate();

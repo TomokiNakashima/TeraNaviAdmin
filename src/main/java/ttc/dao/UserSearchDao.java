@@ -38,16 +38,24 @@ public class UserSearchDao implements AbstractDao{
             cn = MySqlConnectionManager.getInstance().getConnection();
             StringBuffer sql = new StringBuffer();
             sql.append("select user_id,user_name,sex,user_icon_path,mail_address,");
-            sql.append("user_profile ");
-            sql.append("from users where user_name like ? ");
+            sql.append("user_profile,admin_flag ");
+            sql.append("from users where (user_name like ? or");
+            sql.append("  login_id like ? or");
+            sql.append("  user_name_kana like ? or");
+            sql.append("  birth_date like ? or");
+            sql.append("  mail_address like ? )");
 
             sql.append(" and user_status_flag=0");
 
 
 			pst = cn.prepareStatement(new String(sql));
 
-
-			pst.setString(1,"%"+keyword+"%");
+System.out.println(sql);
+            pst.setString(1,"%"+keyword+"%");
+            pst.setString(2,"%"+keyword+"%");
+            pst.setString(3,"%"+keyword+"%");
+            pst.setString(4,"%"+keyword+"%");
+			pst.setString(5,"%"+keyword+"%");
 
             ResultSet rs = pst.executeQuery();
 
@@ -59,6 +67,7 @@ public class UserSearchDao implements AbstractDao{
                 user.setIconPath(rs.getString(4));
                 user.setMailAddress(rs.getString(5));
                 user.setProfile(rs.getString(6));
+                user.setAdminFlag(rs.getString(7));
 
                 result.add(user);
             }

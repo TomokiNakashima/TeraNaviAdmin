@@ -2,7 +2,7 @@ package ttc.bean;
 
 public class SignUpKeyBean implements Bean{
     private String signUpKey;
-    private String keyStatus;
+    private String keyValidDate;
 
 
     /**
@@ -21,19 +21,19 @@ public class SignUpKeyBean implements Bean{
     	this.signUpKey = signUpKey;
     }
 
-    /**
-    * Returns value of keyStatus
-    * @return
-    */
-    public String getKeyStatus() {
-    	return keyStatus;
-    }
+	/**
+	 * @return the keyValidDate
+	 */
+	public String getKeyValidDate() {
+		return keyValidDate;
+	}
 
-    /**
-    * Sets new value of keyStatus
-    * @param
-    */
-    public void setKeyStatus(String keyStatus) {
-    	this.keyStatus = keyStatus;
-    }
+	/**
+	 * @param keyValidDate the keyValidDate to set
+	 */
+	public void setKeyValidDate(String keyValidDate) {
+		this.keyValidDate = keyValidDate;
+	}
+
+    
 }
