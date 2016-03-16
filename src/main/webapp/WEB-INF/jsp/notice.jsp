@@ -30,12 +30,12 @@
 				 "table contextmenu directionality emoticons paste textcolor responsivefilemanager code"
 		   ],
 		   toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect",
-		   toolbar2: "| link unlink anchor | jbimages | image media | forecolor backcolor  | print preview code ",
-		   relative_urls: false ,
-
-			 // external_filemanager_path:"./filemanager/",
-			  filemanager_title:"jbimages" ,
-			  external_plugins: { "jbimages" : "plugins/jbimages/plugin.min.js"}
+		   toolbar2: "| link unlink anchor | jbimages | media image | forecolor backcolor  | print preview code ",
+//		   relative_urls: false ,
+//
+//			 // external_filemanager_path:"./filemanager/",
+//			  filemanager_title:"jbimages" ,
+//			  external_plugins: { "jbimages" : "plugins/jbimages/plugin.min.js"}
 		});
 	</script>
   </head><body>

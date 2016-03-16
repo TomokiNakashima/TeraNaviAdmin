@@ -96,7 +96,7 @@ function sendPolicy(){
 		};
 		ajaxSettings.data = {
 			ajax:"true",
-			policy:CKEDITOR.instances.editorpolicy.getData()
+			policy:tinyMCE.get('editorpolicy').getContent()
 		};
 
 		ajaxSettings.success = function(data){
