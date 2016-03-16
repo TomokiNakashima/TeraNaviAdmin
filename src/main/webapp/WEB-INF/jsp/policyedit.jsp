@@ -19,7 +19,32 @@ pageEncoding="UTF-8"
     <link href="/TeraNaviAdmin/css/assets/css/custom.css" rel="stylesheet">
     <!-- GOOGLE FONTS-->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
-</head><body>
+	<style>
+		iframe{
+			height: 404px;
+		}
+	</style>
+		    <script src="/TeraNaviAdmin/js/tinymce/tinymce.min.js"></script>
+    <script>
+		tinymce.init({
+			mode:"textareas",
+			language : "ja", 
+			selector: "textarea",theme: "modern",
+			plugins: [
+				 "advlist autolink link image imagetools lists charmap print preview hr anchor pagebreak",
+				 "searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking",
+				 "table contextmenu directionality emoticons paste textcolor responsivefilemanager code"
+		   ],
+		   toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect",
+		   toolbar2: "| link unlink anchor | jbimages | image media | forecolor backcolor  | print preview code ",
+		   relative_urls: false ,
+
+			 // external_filemanager_path:"./filemanager/",
+			  filemanager_title:"jbimages" ,
+			  external_plugins: { "jbimages" : "plugins/jbimages/plugin.min.js"}
+		});
+	</script>
+</head><body style="overflow:hidden">
 				<%
 				if(session.getAttribute("loginUser")==null){
 					response.sendRedirect("/TeraNaviAdmin/index"); 
@@ -108,8 +133,7 @@ pageEncoding="UTF-8"
                         </div>
                         <form class="form-horizontalx">
                             <div class="form-group col-sm-8 col-md-offset-2" id="policy_area">
-                                <textarea class="ckeditor" cols="80" id="editorpolicy" name="policy" rows="40"></textarea>
-                                <script src="ckeditor/ckeditor.js"></script>
+                                <textarea cols="80" class="policyArea" id="editorpolicy" name="policy" rows="20"></textarea>
                             </div>
                             <div class="form-group col-md-4 col-md-offset-2">
                                 <button type="button" class="btn btn-primary" onclick="sendPolicy()">改訂版を確認</button>
@@ -122,8 +146,7 @@ pageEncoding="UTF-8"
                         </div>
                         <form class="form-horizontalx">
                             <div class="form-group col-sm-8 col-md-offset-2" id="term_area">
-                                <textarea class="ckeditor" cols="80" id="editorrule" name="rule" rows="40"></textarea>
-                                <script src="ckeditor/ckeditor.js"></script>
+                                <textarea cols="80" class="termArea" id="editorrule" name="rule" rows="80" style="height:404px;"></textarea>
                             </div>
                             <div class="form-group col-md-4 col-md-offset-2">
                                 <button type="button" class="btn btn-primary" onclick="sendRule()">改訂版を確認</button>

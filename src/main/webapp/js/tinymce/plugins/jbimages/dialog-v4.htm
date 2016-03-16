@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+	<title>Upload an image</title>   
+	<script src="/TeraNaviAdmin/js/assets/js/jquery-1.10.2.js"></script>
+    <!-- BOOTSTRAP SCRIPTS -->
+    <script src="/TeraNaviAdmin/js/assets/js/bootstrap.min.js"></script>
+	
+			<link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
+    <script>
+        var ajaxSettings;
+        var ajax;
+		var result;
+
+        $(function () {
+
+            ajaxSettings = {
+                type: 'post',
+                url: '/TeraNavi/upload',
+                processData: false,
+                contentType: false,
+                cache: false,
+                dataType: 'json'
+
+            };
+
+        });
+
+        $(function () {
+            //画像追加-------------------------------------------------------------
+
+            $(document).on("change", "#file_input", function () {
+                var file = this.files[0];
+                // ブラウザごとの違いをフォローする
+                window.URL = window.URL || window.webkitURL;
+
+                // Blob URLの作成
+                src = window.URL.createObjectURL(file);
+                $("#headimg").attr("src", src);
+                uploadImage();
+            });
+
+            function uploadImage() {
+                var files = document.getElementById("file_input").files;
+
+                for (var i = 0; i < files.length; i++) {
+                    var f = files[i];
+                    var formData = new FormData();
+                    formData.append("file", f);
+                    ajaxSettings.data = formData;
+                    ajaxSettings.url = "/TeraNavi/upload/article";
+                    ajaxSettings.success = function (data) {
+                        var imageTag = "<img src=\"" + data.result + "\" / style=\"width:50%;\">";
+						result=imageTag;
+						$("#imageM").html(imageTag);
+						$("#pcture-modal").modal();
+                        
+                    }
+
+                    ajax = $.ajax(ajaxSettings);
+                }
+            }
+
+        });
+		
+		function inputImage(){
+			top.tinymce.activeEditor.selection.setContent(result);
+			parent.tinyMCE.activeEditor.windowManager.close(window);
+		}
+
+
+
+    </script>
+
+	<link href="css/dialog-v4.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+	<form class="form-inline">
+	       <input type="file" accept="*.jpg" id="file_input">
+		   <div id="show">
+			    <div id="pcture-modal" class="modal fade" aria-hidden="true" style="display: none">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="background-color:#ffffff;width:100%">
+                            <div id="imageM" class="modal-body">
+                            </div>
+							<button type="button" class="btn btn-primary pull-right" onclick="inputImage()">挿入</button>
+                        </div>
+                    </div>
+                </div>
+		   </div>
+	</form>
+
+</body>
+</html>
