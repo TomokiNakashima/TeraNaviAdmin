@@ -90,7 +90,7 @@ function sendRule(){
 		};
 		ajaxSettings.data = {
 			ajax:"true",
-			rule:CKEDITOR.instances.editorrule.getData()
+			rule:tinyMCE.get('editorrule').getContent()
 		};
 
 		ajaxSettings.success = function(data){

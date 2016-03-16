@@ -51,7 +51,7 @@
                     ajaxSettings.data = formData;
                     ajaxSettings.url = "/TeraNavi/upload/article";
                     ajaxSettings.success = function (data) {
-                        var imageTag = "<img src=\"" + data.result + "\" / style=\"width:50%;\">";
+                        var imageTag = "<img src=\"" + data.result + "\" / style=\"width:70%;\">";
 						result=imageTag;
 						$("#imageM").html(imageTag);
 						$("#pcture-modal").modal();
@@ -81,7 +81,7 @@
 	       <input type="file" accept="*.jpg" id="file_input">
 		   <div id="show">
 			    <div id="pcture-modal" class="modal fade" aria-hidden="true" style="display: none">
-                    <div class="modal-dialog">
+                    <div class="odal-dialog">
                         <div class="modal-content" style="background-color:#ffffff;width:100%">
                             <div id="imageM" class="modal-body">
                             </div>
